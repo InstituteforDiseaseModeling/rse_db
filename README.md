@@ -1,1 +1,2 @@
-# rse_db
+# rse-core
+
