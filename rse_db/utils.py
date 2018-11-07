@@ -125,8 +125,6 @@ def get_flask_db(app=None, get_models_func: Callable = None, declarative_base_fu
         from rse_api import get_application
         app = get_application()
 
-
-
     # First check to see if we have SQLAlchemy
     if HAS_FLASK_SQLALCHEMY:
         from flask_sqlalchemy import SQLAlchemy

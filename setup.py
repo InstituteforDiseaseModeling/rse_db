@@ -51,7 +51,8 @@ setup(
 
     extras_require={
         'full': [
-            'nose'
+            'sphinx'
+            'pytest'
         ],
         'dev': ['check-manifest'],
         'test': ['coverage'],
