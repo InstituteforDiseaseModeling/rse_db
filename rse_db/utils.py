@@ -150,7 +150,7 @@ def get_flask_db(app=None, get_models_func: Callable = None, declarative_base_fu
     if get_models_func:
         models = get_models_func()
 
-    if declarative_base_func is not None and os.environ.get('FLASK_ENV', 'production') == 'development' \
+    if declarative_base_func is not None and os.environ.get('FLASK_ENV', 'production') in ['development', 'testing'] \
                 and os.environ.get('DEV_DB_CREATE', 'True').lower() in app.config.get('TRUE_OPTIONS', ['true']):
             base.metadata.create_all(bind=get_engine(db))
 
