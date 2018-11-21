@@ -73,7 +73,7 @@ def get_cli_commands(app, declarative_base_func: Callable=get_declarative_base):
     @db_cli.command('init', help="Creates database tables based off of loaded database models. If the table already "
                                  "exists, it will be skipped")
     def create_db():
-        base.metadata.create_all(bind=get_engine(get_flask_db()))
+        base.metadata.create_all(bind=get_engine(get_db()))
 
     @db_cli.command('drop_all', help="Drops all known tables in the schema")
     def drop_all():
@@ -82,7 +82,7 @@ def get_cli_commands(app, declarative_base_func: Callable=get_declarative_base):
             answer = input("Are you sure you want to delete all tables? [y/n]")
 
         if answer.lower() in ['yes', 'y']:
-            base.metadata.drop_all(bind=get_engine(get_flask_db()))
+            base.metadata.drop_all(bind=get_engine(get_db()))
 
     @db_cli.command('list_tables', help="List all the tables available")
     def list_tables():
