@@ -6,7 +6,7 @@ from sqlalchemy.sql import ClauseElement
 
 from rse_api.decorators import singleton_function
 from sqlalchemy import create_engine, event
-from sqlalchemy.orm import mapper
+from sqlalchemy.orm import mapper, sessionmaker
 from sqlalchemy.engine import Engine
 from sqlalchemy.ext.declarative import declarative_base
 import importlib
@@ -14,6 +14,7 @@ import importlib
 
 HAS_FLASK_SQLALCHEMY = importlib.find_loader('flask_sqlalchemy') is not None
 HAS_FLASK_MARSHMALLOW = importlib.find_loader('flask_marshmallow') is not None
+
 
 
 def get_or_create(session, model, defaults=None, **kwargs):
@@ -27,14 +28,15 @@ def get_or_create(session, model, defaults=None, **kwargs):
         session.add(instance)
         return instance
 
+
 @singleton_function
-def get_declarative_base():
+def get_declarative_base(**kwargs):
     """
     Default function for getting the declarative base class. There are cases you may want to do more to the class
     in which case you want to define another function in lieu of this one
     :return:
     """
-    return declarative_base()
+    return declarative_base(**kwargs)
 
 
 @singleton_function
@@ -107,13 +109,13 @@ def get_engine(db) -> Engine:
 
 
 @singleton_function
-def get_flask_db(app=None, get_models_func: Callable = None, declarative_base_func: Callable=get_declarative_base,
-                 connection_string: str=None, add_cli_commands=True):
+def get_db(flask_app=None, get_models_func: Callable = None, declarative_base_func: Callable=get_declarative_base,
+           connection_string: str=None, add_cli_commands=True):
     """
     Returns a DB object for flask. The function first attempts to load flask_sqlalchemy. If that is present,
     it will
 
-    :param app: Pass a flask application to the app if desired. Otherwise, get_application from rse_api will be called
+    :param flask_app: Pass a flask application to the app if desired. Otherwise, get_application from rse_api will be called
     :param get_models_func: Function to call after loading the DB connection to load all the model files
     :param declarative_base_func: Function to call when loading the DB the first time to get a declartive base object.
     This function ideally should function as a singleton
@@ -121,42 +123,36 @@ def get_flask_db(app=None, get_models_func: Callable = None, declarative_base_fu
     :return: Either a SQLAlchemy or Engine object representing a connection to the db
     :rtype: Union[flask_sqlalchemy.SQLAlchemy,sqlalchemy.engine.Engine]
     """
-    if app is None:
-        from rse_api import get_application
-        app = get_application()
 
     # First check to see if we have SQLAlchemy
-    if HAS_FLASK_SQLALCHEMY:
+    if flask_app is not None and HAS_FLASK_SQLALCHEMY:
         from flask_sqlalchemy import SQLAlchemy
-        db = SQLAlchemy(app)
+        db = SQLAlchemy(flask_app)
     else: # Otherwise fallback to create_engine
         if connection_string is None:
             raise ValueError("Connection string must be populated when you are not using flask_sqlalchemy.")
         db = create_engine(connection_string)
 
     # If the user has flask_marshmallow installed, lets use that. We define our declarative base there if specified
-    if HAS_FLASK_SQLALCHEMY and HAS_FLASK_MARSHMALLOW:
-        ma, base = get_flask_marshmallow(app, db, declarative_base_func=declarative_base_func)
+    if flask_app is not None and HAS_FLASK_SQLALCHEMY and HAS_FLASK_MARSHMALLOW:
+        ma, base = get_flask_marshmallow(flask_app, db, declarative_base_func=declarative_base_func)
 
     # Otherwise see if we have a declarative_base_func defined
     elif declarative_base_func:
-        base = declarative_base_func()
+        base = declarative_base_func(bind=db)
         db.declartive_base = base
-        # if we are not using flask_sqlalchemy, bind the base to the engine
-        if not HAS_FLASK_SQLALCHEMY:
-            base.metadata.bind(db)
 
     # If a models function was specified, load all the models now
     if get_models_func:
         models = get_models_func()
 
     if declarative_base_func is not None and os.environ.get('FLASK_ENV', 'production') == 'development' \
-                and os.environ.get('DEV_DB_CREATE', 'True').lower() in app.config.get('TRUE_OPTIONS', ['true']):
+                and os.environ.get('DEV_DB_CREATE', 'True').lower() in flask_app.config.get('TRUE_OPTIONS', ['true']):
             base.metadata.create_all(bind=get_engine(db))
 
     # Add our DB CLI commands
-    if add_cli_commands:
-        get_cli_commands(app)
+    if flask_app is not None and add_cli_commands:
+        get_cli_commands(flask_app)
     return db
 
 

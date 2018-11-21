@@ -1,7 +1,14 @@
 import importlib
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, func, Integer
+from sqlalchemy.ext.declarative import declarative_base
+
+from rse_db.utils import get_declarative_base
+from sqlalchemy import Column, DateTime, func, Integer, inspect, orm
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm.exc import UnmappedClassError, NoResultFound
+
+from rse_api import singleton_function
 
 HAS_MARSHMALLOW = importlib.find_loader('marshmallow') is not None
 
@@ -48,41 +55,116 @@ if HAS_MARSHMALLOW:
                     })
 
 
-class CRUDModel(object):
+    def model_to_str(x, charset='utf8', errors='strict'):
+        if x is None or isinstance(x, str):
+            return x
 
-    @classmethod
-    def get_by_pk(cls, *args):
-        #assume the arguments are in order by definition order
-        filter_args = {}
-        keys = list(cls.__mapper__.primary_key)
-        if len(keys) != len(args):
-            raise ValueError("Missing the required arguments. Please provide the following {}".format([k.key for k in keys]))
-        for i in range(len(keys)):
-            filter_args[keys[i].key] = args[i]
-        return cls.query.filter_by(**filter_args).one()
+        if isinstance(x, bytes):
+            return x.decode(charset, errors)
 
-    @classmethod
-    def find_all(cls, *args, **kwargs):
-        return cls.query.filter_by(**kwargs)
+        return str(x)
 
-    @classmethod
-    def create(cls, new_instance, commit=True, session=None):
-        if session is None:
-            session = cls.query.session
-        if not isinstance(new_instance, cls):
-            raise ValueError("You must provide an instance of {}, not {}".format(cls.__name__, type(new_instance)))
-        session.add(new_instance)
-        if commit:
-            session.commit()
-        return session
+    if True:
 
-    @classmethod
-    def delete_by_pk(cls, *args, commit=False, session=None):
-        if session is None:
-            session = cls.query.session
-        item = cls.get_by_pk(*args)
-        if item:
-            session.delete(item)
+        @singleton_function
+        def get_session_maker():
+            from rse_db.utils import get_db
+            return sessionmaker(bind=get_db())
 
-        if commit:
-            session.commit()
+
+        def get_session():
+            return get_session_maker()()
+
+
+        class RSEBaseQuery(orm.Query):
+            pass
+
+        class RSEQueryBaseModel(object):
+            query = None
+
+        class RSEQueryProperty(object):
+            def __init__(self, get_session_callback=get_session):
+                self.get_session = get_session_callback
+
+            def __get__(self, obj, type):
+                try:
+                    mapper = orm.class_mapper(type)
+                    if mapper:
+                        return RSEBaseQuery(mapper, session=self.get_session())
+                except UnmappedClassError:
+                    return None
+
+        @singleton_function
+        def get_query_base_model(get_session_callback=get_session):
+            base = declarative_base(cls=RSEQueryBaseModel)
+            base.query = RSEQueryProperty(get_session_callback)
+            return base
+
+
+    def get_filter_by_arguments(args, keys, kwargs):
+        filter_args = kwargs
+        if len(args) > 0:
+            if len(keys) != len(args):
+                raise ValueError(
+                    "Missing the required arguments. Please provide the following {}".format([k.key for k in keys]))
+            for i in range(len(keys)):
+                filter_args[keys[i].key] = args[i]
+        return filter_args
+
+    class RSEReadOnlyModel(object):
+        @classmethod
+        def get_by_pk(cls, *args):
+            # assume the arguments are in order by definition order
+            keys = list(cls.__mapper__.primary_key)
+            filter_args = get_filter_by_arguments(args, keys, {})
+            try:
+                result = cls.query.filter_by(**filter_args).one()
+            except NoResultFound as e:
+                key_str = ', '.join(['{}={}'.format(k,v) for k, v in filter_args.items()])
+                plural_message = '' if len(filter_args.keys()) == 1 else 's'
+                raise NoResultFound("Could not locate {} by"
+                                    " primary key{} of {}".format(cls.__name__, plural_message, key_str))
+            return result
+
+        @classmethod
+        def find_one(cls, *args, **kwargs):
+            keys = list(cls.__mapper__.primary_key)
+            filter_args = get_filter_by_arguments(args, keys, kwargs)
+            return cls.query.filter_by(**filter_args).one_or_none()
+
+        @classmethod
+        def find_first(cls, *args, order=None, **kwargs, ):
+            keys = list(cls.__mapper__.primary_key)
+            filter_args = get_filter_by_arguments(args, keys, kwargs)
+            query = cls.query.filter_by(**filter_args)
+            if order:
+                query = query.order_by(order)
+            return query.first()
+
+        @classmethod
+        def find_all(cls, *args, **kwargs):
+            return cls.query.filter_by(*args, **kwargs).all()
+
+    class RSEBasicReadWriteModel(RSEReadOnlyModel):
+        @classmethod
+        def save(cls, new_instance, commit=True, session=None):
+            if session is None:
+                session = cls.query.session
+            if not isinstance(new_instance, cls):
+                raise ValueError("You must provide an instance of {}, not {}".format(cls.__name__, type(new_instance)))
+            session.add(new_instance)
+            if commit:
+                session.commit()
+            return new_instance
+
+        @classmethod
+        def delete_by_pk(cls, *args, commit=False, session=None):
+            if session is None:
+                session = cls.query.session
+            item = cls.get_by_pk(*args)
+            if item:
+                session.delete(item)
+
+            if commit:
+                session.commit()
+
