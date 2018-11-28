@@ -1,0 +1,46 @@
+rse\_db package
+===============
+
+Submodules
+----------
+
+rse\_db.data\_patterns module
+-----------------------------
+
+.. automodule:: rse_db.data_patterns
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+rse\_db.decorators module
+-------------------------
+
+.. automodule:: rse_db.decorators
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+rse\_db.extensions module
+-------------------------
+
+.. automodule:: rse_db.extensions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+rse\_db.utils module
+--------------------
+
+.. automodule:: rse_db.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: rse_db
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,287 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>rse_db package &#8212; rse_api 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="contributing.html" />
+    <link rel="prev" title="rse_db" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="rse-db-package">
+<h1>rse_db package<a class="headerlink" href="#rse-db-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-rse_db.data_patterns">
+<span id="rse-db-data-patterns-module"></span><h2>rse_db.data_patterns module<a class="headerlink" href="#module-rse_db.data_patterns" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="rse_db.data_patterns.CreatedAndUpdatedAtMixin">
+<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">CreatedAndUpdatedAtMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAndUpdatedAtMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="rse_db.data_patterns.CreatedAndUpdatedAtMixin.created_at">
+<code class="descname">created_at</code><em class="property"> = Column(None, DateTime(), table=None, default=ColumnDefault(&lt;sqlalchemy.sql.functions.now at 0x7f6aa6ed6c88; now&gt;))</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtMixin.created_at" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="rse_db.data_patterns.CreatedAndUpdatedAtMixin.updated_at">
+<code class="descname">updated_at</code><em class="property"> = Column(None, DateTime(), table=None, onupdate=ColumnDefault(&lt;sqlalchemy.sql.functions.now at 0x7f6aa6e92470; now&gt;), default=ColumnDefault(&lt;sqlalchemy.sql.functions.now at 0x7f6aa6e92358; now&gt;))</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtMixin.updated_at" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin">
+<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">CreatedAndUpdatedAtSchemaMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAndUpdatedAtSchemaMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.created_at">
+<code class="descname">created_at</code><em class="property"> = &lt;fields.DateTime(default=&lt;marshmallow.missing&gt;, attribute=None, validate=None, required=False, load_only=False, dump_only=False, missing=2018-11-28T07:27:00.837241, allow_none=False, error_messages={'required': 'Missing data for required field.', 'type': 'Invalid input type.', 'null': 'Field may not be null.', 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid datetime.', 'format': '&quot;{input}&quot; cannot be formatted as a datetime.'})&gt;</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.created_at" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created">
+<code class="descname">ensure_updated_is_greater_than_created</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.updated_at">
+<code class="descname">updated_at</code><em class="property"> = &lt;fields.DateTime(default=&lt;marshmallow.missing&gt;, attribute=None, validate=None, required=False, load_only=False, dump_only=False, missing=2018-11-28T07:27:00.837268, allow_none=False, error_messages={'required': 'Missing data for required field.', 'type': 'Invalid input type.', 'null': 'Field may not be null.', 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid datetime.', 'format': '&quot;{input}&quot; cannot be formatted as a datetime.'})&gt;</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.updated_at" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="rse_db.data_patterns.CreatedAtMixin">
+<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">CreatedAtMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAtMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAtMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="rse_db.data_patterns.CreatedAtMixin.created_at">
+<code class="descname">created_at</code><em class="property"> = Column(None, DateTime(), table=None, default=ColumnDefault(&lt;sqlalchemy.sql.functions.now at 0x7f6aa7a6c4e0; now&gt;))</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAtMixin.created_at" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="rse_db.data_patterns.CreatedAtSchemaMixin">
+<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">CreatedAtSchemaMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAtSchemaMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAtSchemaMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="rse_db.data_patterns.CreatedAtSchemaMixin.created_at">
+<code class="descname">created_at</code><em class="property"> = &lt;fields.DateTime(default=datetime.datetime(2018, 11, 28, 7, 27, 0, 836633), attribute=None, validate=None, required=False, load_only=False, dump_only=False, missing=&lt;marshmallow.missing&gt;, allow_none=False, error_messages={'required': 'Missing data for required field.', 'type': 'Invalid input type.', 'null': 'Field may not be null.', 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid datetime.', 'format': '&quot;{input}&quot; cannot be formatted as a datetime.'})&gt;</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAtSchemaMixin.created_at" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="rse_db.data_patterns.IdMixin">
+<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">IdMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#IdMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.IdMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="rse_db.data_patterns.IdMixin.id">
+<code class="descname">id</code><em class="property"> = Column(None, Integer(), table=None, primary_key=True, nullable=False)</em><a class="headerlink" href="#rse_db.data_patterns.IdMixin.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="rse_db.data_patterns.IdSchemaMixin">
+<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">IdSchemaMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#IdSchemaMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.IdSchemaMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="rse_db.data_patterns.IdSchemaMixin.id">
+<code class="descname">id</code><em class="property"> = &lt;fields.Integer(default=&lt;marshmallow.missing&gt;, attribute=None, validate=&lt;Range(min=0, max=None, error=None)&gt;, required=True, load_only=False, dump_only=False, missing=&lt;marshmallow.missing&gt;, allow_none=False, error_messages={'required': 'Missing data for required field.', 'type': 'Invalid input type.', 'null': 'Field may not be null.', 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid integer.'})&gt;</em><a class="headerlink" href="#rse_db.data_patterns.IdSchemaMixin.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="rse_db.data_patterns.RSEBasicReadWriteModel">
+<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">RSEBasicReadWriteModel</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEBasicReadWriteModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEBasicReadWriteModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#rse_db.data_patterns.RSEReadOnlyModel" title="rse_db.data_patterns.RSEReadOnlyModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">rse_db.data_patterns.RSEReadOnlyModel</span></code></a></p>
+<dl class="classmethod">
+<dt id="rse_db.data_patterns.RSEBasicReadWriteModel.delete_by_pk">
+<em class="property">classmethod </em><code class="descname">delete_by_pk</code><span class="sig-paren">(</span><em>*args</em>, <em>commit=False</em>, <em>session=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEBasicReadWriteModel.delete_by_pk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEBasicReadWriteModel.delete_by_pk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="rse_db.data_patterns.RSEBasicReadWriteModel.save">
+<em class="property">classmethod </em><code class="descname">save</code><span class="sig-paren">(</span><em>new_instance</em>, <em>commit=True</em>, <em>session=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEBasicReadWriteModel.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEBasicReadWriteModel.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="rse_db.data_patterns.RSEReadOnlyModel">
+<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">RSEReadOnlyModel</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="classmethod">
+<dt id="rse_db.data_patterns.RSEReadOnlyModel.find_all">
+<em class="property">classmethod </em><code class="descname">find_all</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="rse_db.data_patterns.RSEReadOnlyModel.find_first">
+<em class="property">classmethod </em><code class="descname">find_first</code><span class="sig-paren">(</span><em>*args</em>, <em>order=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_first"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="rse_db.data_patterns.RSEReadOnlyModel.find_one">
+<em class="property">classmethod </em><code class="descname">find_one</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_one"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="rse_db.data_patterns.RSEReadOnlyModel.find_one_or_none">
+<em class="property">classmethod </em><code class="descname">find_one_or_none</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_one_or_none"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_one_or_none" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="rse_db.data_patterns.RSEReadOnlyModel.get_by_pk">
+<em class="property">classmethod </em><code class="descname">get_by_pk</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.get_by_pk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.get_by_pk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="rse_db.data_patterns.get_filter_by_arguments">
+<code class="descclassname">rse_db.data_patterns.</code><code class="descname">get_filter_by_arguments</code><span class="sig-paren">(</span><em>args</em>, <em>keys</em>, <em>kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#get_filter_by_arguments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.get_filter_by_arguments" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="rse_db.data_patterns.model_to_str">
+<code class="descclassname">rse_db.data_patterns.</code><code class="descname">model_to_str</code><span class="sig-paren">(</span><em>x</em>, <em>charset='utf8'</em>, <em>errors='strict'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#model_to_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.model_to_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-rse_db.decorators">
+<span id="rse-db-decorators-module"></span><h2>rse_db.decorators module<a class="headerlink" href="#module-rse_db.decorators" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="rse_db.decorators.is_json_array">
+<code class="descclassname">rse_db.decorators.</code><code class="descname">is_json_array</code><span class="sig-paren">(</span><em>field</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/decorators.html#is_json_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.decorators.is_json_array" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="rse_db.decorators.is_schema_match">
+<code class="descclassname">rse_db.decorators.</code><code class="descname">is_schema_match</code><span class="sig-paren">(</span><em>cls</em>, <em>schema</em>, <em>field</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/decorators.html#is_schema_match"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.decorators.is_schema_match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="rse-db-extensions-module">
+<h2>rse_db.extensions module<a class="headerlink" href="#rse-db-extensions-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="rse-db-utils-module">
+<h2>rse_db.utils module<a class="headerlink" href="#rse-db-utils-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-rse_db">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rse_db" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">rse_api</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">rse_db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">rse_db</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">rse_db package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">rse_db</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">rse_db</a></li>
+      <li>Next: <a href="contributing.html" title="next chapter">&lt;no title&gt;</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/rse_db.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
