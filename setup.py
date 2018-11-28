@@ -4,9 +4,29 @@ from setuptools import setup, find_packages
 from os import path
 here = path.abspath(path.dirname(__file__))
 
-# Get the long description from the README file
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+
+from setuptools import setup, find_packages
+
+with open('README.rst') as readme_file:
+    readme = readme_file.read()
+
+with open('HISTORY.rst') as history_file:
+    history = history_file.read()
+
+with open('requirements_dev.txt') as dev_requirement_file:
+    dev_requirements = dev_requirement_file.read().split("\n")
+
+extras_require={
+        'full': ['dramatiq', 'apscheduler>=3.5.3'],
+        'dev': dev_requirements
+    }
+requirements = [
+    'flask>=1.0.x,<1.1',
+    'marshmallow>2,<3'
+]
+setup_requirements = ['pytest-runner']
+test_requirements = ['pytest']
+
 
 setup(
     name='rse_db',  # Required
@@ -15,7 +35,7 @@ setup(
     # https://www.python.org/dev/peps/pep-0440/
     version='1.0.0',  # Required
     description='RSE-DB provides some common tools for working with dbs',
-    long_description=long_description,
+    long_description=readme + '\n\n' + history,
     long_description_content_type='text/markdown',
     url='https://github.com/InstituteforDiseaseModeling/rse_db',
     author='Institute for Disease Modeling - RSE Team',
@@ -48,15 +68,10 @@ setup(
         'rse_api>=1.0.0,<1.1',
         'sqlalchemy>=1.2.12,<1.13'
     ],
-
-    extras_require={
-        'full': [
-            'sphinx'
-            'pytest'
-        ],
-        'dev': ['check-manifest'],
-        'test': ['coverage'],
-    },
+    setup_requires=setup_requirements,
+    extras_requires=extras_require,
+    test_suite='tests',
+    tests_require=test_requirements,
     project_urls={
         'Bug Reports': 'https://github.com/InstituteforDiseaseModeling/rse_db/issues',
         'Source': 'https://github.com/InstituteforDiseaseModeling/rse_db',

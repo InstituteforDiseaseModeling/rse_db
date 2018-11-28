@@ -1,9 +1,10 @@
 import unittest
 import sqlalchemy as sa
-from sqlalchemy.sql.functions import user
+from sqlalchemy.orm.exc import NoResultFound
 
-from rse_db.data_patterns import RSEReadOnlyModel, get_query_base_model
-from rse_db.utils import get_db, get_declarative_base
+from rse_db.data_patterns import RSEReadOnlyModel
+from rse_db.extensions import get_query_base_model
+from rse_db.utils import get_db
 
 
 class TestDataPattern(unittest.TestCase):
@@ -22,4 +23,7 @@ class TestDataPattern(unittest.TestCase):
 
         base.metadata.create_all(db)
         user = User.find_first(1)
-        print(user)
+        self.assertIsNone(user)
+
+        with self.assertRaises(NoResultFound):
+            user = User.find_one(1)
