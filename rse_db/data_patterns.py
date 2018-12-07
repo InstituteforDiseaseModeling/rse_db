@@ -123,7 +123,7 @@ class RSEReadOnlyModel(object):
 
 class RSEBasicReadWriteModel(RSEReadOnlyModel):
     def __setattr__(self, name, value):
-        setattr(self, name, value)
+        object.__setattr__(self, name, value)
 
     @classmethod
     def save(cls, new_instance, commit=True, session=None):
