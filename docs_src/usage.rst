@@ -1,6 +1,6 @@
 Usage
 =====
 
-To use rse_api in a project::
+To use rse_db in a project::
 
     import rse_db

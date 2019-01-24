@@ -1,4 +1,4 @@
-Welcome to rse_api's documentation!
+Welcome to rse_db's documentation!
 ======================================
 
 .. toctree::

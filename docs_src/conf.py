@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# rse_api documentation build configuration file, created by
+# rse_db documentation build configuration file, created by
 # sphinx-quickstart on Fri Jun  9 13:47:02 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -47,7 +47,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'rse_api'
+project = u'rse_db'
 author = u"Clinton Collins"
 
 # The version info for the project you're documenting, acts as replacement
@@ -139,7 +139,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'rse_db',
-     u'rse_api Documentation',
+     u'rse_db Documentation',
      [author], 1)
 ]
 
