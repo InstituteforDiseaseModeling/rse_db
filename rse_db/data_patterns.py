@@ -11,7 +11,7 @@ class IdMixin(object):
 
 
 class CreatedAtMixin(object):
-    created_at = Column(DateTime, default=func.now())
+    created_at = Column(DateTime, server_default=func.now())
 
 
 class CreatedAndUpdatedAtMixin(object):
