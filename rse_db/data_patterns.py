@@ -1,6 +1,6 @@
 import importlib
 from datetime import datetime
-from sqlalchemy import Column, DateTime, func, Integer
+from sqlalchemy import Column, DateTime, func, Integer, FetchedValue
 from sqlalchemy.orm.exc import NoResultFound
 
 HAS_MARSHMALLOW = importlib.find_loader('marshmallow') is not None
@@ -15,8 +15,8 @@ class CreatedAtMixin(object):
 
 
 class CreatedAndUpdatedAtMixin(object):
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), server_onupdate=func.now())
 
 
 # If we have marshmallow, declare schema mixins as well
