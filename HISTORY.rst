@@ -1,5 +1,10 @@
 History
 =======
+
+1.0.2
+-----
+* Fix bug in CreatedAndUpdatedAtMixinSchema validation
+
 1.0.1
 -----
 * Fix minor bug in RSEBasicReadWriteModel
