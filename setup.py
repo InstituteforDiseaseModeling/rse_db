@@ -33,7 +33,7 @@ setup(
 
     # Versions should comply with PEP 440:
     # https://www.python.org/dev/peps/pep-0440/
-    version='1.0.1',  # Required
+    version='1.0.2',  # Required
     description='RSE-DB provides some common tools for working with dbs',
     long_description=readme + '\n\n' + history,
     long_description_content_type='text/markdown',
@@ -65,7 +65,7 @@ setup(
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        'rse_api>=1.0.1,<1.1',
+        'rse_api>=1.0.2,<1.1',
         'sqlalchemy>=1.2.12,<1.13'
     ],
     setup_requires=setup_requirements,
