@@ -5,7 +5,6 @@ from sqlalchemy.orm.exc import NoResultFound
 
 HAS_MARSHMALLOW = importlib.find_loader('marshmallow') is not None
 
-
 class IdMixin(object):
     id = Column(Integer, autoincrement=True, primary_key=True)
 
@@ -46,6 +45,7 @@ if HAS_MARSHMALLOW:
                         'created_at': error_message,
                         'updated_at': error_message
                     })
+            return item
 
 
     def model_to_str(x, charset='utf8', errors='strict'):
