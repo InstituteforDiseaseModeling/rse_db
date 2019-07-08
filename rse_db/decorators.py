@@ -1,9 +1,19 @@
 import json
+from collections import Callable
 
 from marshmallow import validates, ValidationError
 
 
-def is_json_array(field):
+def is_json_array(field) -> Callable:
+    """
+    Decorator that validates that a specific field of a Marshmallow Schmea is a JSON Array
+
+    Args:
+        field: Field to validate
+
+    Returns:
+
+    """
     @validates(field)
     def check_field(self, key, value):
         # If this fails, it will throw a Marshmallow validation error
