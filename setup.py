@@ -28,18 +28,9 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/InstituteforDiseaseModeling/rse_db",
     author="Institute for Disease Modeling - RSE Team",
-    # Classifiers help users find your project by categorizing it.
-    #
-    # For a list of valid classifiers, see https://pypi.org/classifiers/
-    classifiers=[  # Optional
-        # How mature is this project? Common values are
-        #   3 - Alpha
-        #   4 - Beta
-        #   5 - Production/Stable
+    classifiers=[
         "Development Status :: 4 - Beta",
-        # Indicate who your project is intended for
         "Intended Audience :: Developers",
-        # Pick your license as you wish
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
@@ -48,6 +39,7 @@ setup(
     ],
     keywords="rse-core",
     packages=find_packages(exclude=["contrib", "docs", "tests"]),
+    license="MIT License",
     install_requires=requirements["default"],
     setup_requires=setup_requirements,
     extras_requires=extras_require,
