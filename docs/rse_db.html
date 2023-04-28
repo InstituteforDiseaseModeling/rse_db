@@ -1,19 +1,18 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>rse_db package &#8212; rse_db 1.0.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>rse_db package &#8212; rse_db 1.0.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Contributing" href="contributing.html" />
@@ -34,175 +33,449 @@
 
           <div class="body" role="main">
 
-  <div class="section" id="rse-db-package">
+  <section id="rse-db-package">
 <h1>rse_db package<a class="headerlink" href="#rse-db-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-rse_db.data_patterns">
+</section>
+<section id="module-rse_db.data_patterns">
 <span id="rse-db-data-patterns-module"></span><h2>rse_db.data_patterns module<a class="headerlink" href="#module-rse_db.data_patterns" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="rse_db.data_patterns.CreatedAndUpdatedAtMixin">
-<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">CreatedAndUpdatedAtMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAndUpdatedAtMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtMixin" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="rse_db.data_patterns.CreatedAndUpdatedAtMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rse_db.data_patterns.</span></span><span class="sig-name descname"><span class="pre">CreatedAndUpdatedAtMixin</span></span><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAndUpdatedAtMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="attribute">
-<dt id="rse_db.data_patterns.CreatedAndUpdatedAtMixin.created_at">
-<code class="descname">created_at</code><em class="property"> = Column(None, DateTime(), table=None, server_default=DefaultClause(&lt;sqlalchemy.sql.functions.now at 0x7f0dc612f128; now&gt;, for_update=False))</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtMixin.created_at" title="Permalink to this definition">¶</a></dt>
+<p>DB Model with a created at and updated at columns. Created at is set to the current time when object is inserted
+into db and updated at is set to the current time when an object is saved/inserted</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rse_db.data_patterns.CreatedAndUpdatedAtMixin.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Column(None,</span> <span class="pre">DateTime(),</span> <span class="pre">table=None,</span> <span class="pre">server_default=DefaultClause(&lt;sqlalchemy.sql.functions.now</span> <span class="pre">at</span> <span class="pre">0x103ac4190;</span> <span class="pre">now&gt;,</span> <span class="pre">for_update=False))</span></em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtMixin.created_at" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="rse_db.data_patterns.CreatedAndUpdatedAtMixin.updated_at">
-<code class="descname">updated_at</code><em class="property"> = Column(None, DateTime(), table=None, server_default=DefaultClause(&lt;sqlalchemy.sql.functions.now at 0x7f0dc60ea7b8; now&gt;, for_update=False))</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtMixin.updated_at" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rse_db.data_patterns.CreatedAndUpdatedAtMixin.updated_at">
+<span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Column(None,</span> <span class="pre">DateTime(),</span> <span class="pre">table=None,</span> <span class="pre">server_default=DefaultClause(&lt;sqlalchemy.sql.functions.now</span> <span class="pre">at</span> <span class="pre">0x103ac43d0;</span> <span class="pre">now&gt;,</span> <span class="pre">for_update=False))</span></em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtMixin.updated_at" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin">
-<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">CreatedAndUpdatedAtSchemaMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAndUpdatedAtSchemaMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rse_db.data_patterns.</span></span><span class="sig-name descname"><span class="pre">CreatedAndUpdatedAtSchemaMixin</span></span><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAndUpdatedAtSchemaMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="attribute">
-<dt id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.created_at">
-<code class="descname">created_at</code><em class="property"> = &lt;fields.DateTime(default=&lt;marshmallow.missing&gt;, attribute=None, validate=None, required=False, load_only=False, dump_only=False, missing=2019-01-25T09:42:10.634390, allow_none=False, error_messages={'required': 'Missing data for required field.', 'type': 'Invalid input type.', 'null': 'Field may not be null.', 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid datetime.', 'format': '&quot;{input}&quot; cannot be formatted as a datetime.'})&gt;</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.created_at" title="Permalink to this definition">¶</a></dt>
+<p>Marshmallow Schema mixing to match CreatedAtMixin DB Model</p>
+<dl class="simple">
+<dt>See Also:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#rse_db.data_patterns.CreatedAtMixin" title="rse_db.data_patterns.CreatedAtMixin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rse_db.data_patterns.CreatedAtMixin()</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;fields.DateTime(default=&lt;marshmallow.missing&gt;,</span> <span class="pre">attribute=None,</span> <span class="pre">validate=None,</span> <span class="pre">required=False,</span> <span class="pre">load_only=False,</span> <span class="pre">dump_only=False,</span> <span class="pre">missing=2023-04-28T10:08:53.551531,</span> <span class="pre">allow_none=False,</span> <span class="pre">error_messages={'required':</span> <span class="pre">'Missing</span> <span class="pre">data</span> <span class="pre">for</span> <span class="pre">required</span> <span class="pre">field.',</span> <span class="pre">'type':</span> <span class="pre">'Invalid</span> <span class="pre">input</span> <span class="pre">type.',</span> <span class="pre">'null':</span> <span class="pre">'Field</span> <span class="pre">may</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">null.',</span> <span class="pre">'validator_failed':</span> <span class="pre">'Invalid</span> <span class="pre">value.',</span> <span class="pre">'invalid':</span> <span class="pre">'Not</span> <span class="pre">a</span> <span class="pre">valid</span> <span class="pre">datetime.',</span> <span class="pre">'format':</span> <span class="pre">'&quot;{input}&quot;</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">formatted</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">datetime.'})&gt;</span></em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.created_at" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created">
-<code class="descname">ensure_updated_is_greater_than_created</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created">
+<span class="sig-name descname"><span class="pre">ensure_updated_is_greater_than_created</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validation method to ensure that updated at is not less than created at
+Args:</p>
+<blockquote>
+<div><p>item: Item we are verifying</p>
+</div></blockquote>
+<p>Returns:</p>
+</dd></dl>
 
-<dl class="attribute">
-<dt id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.updated_at">
-<code class="descname">updated_at</code><em class="property"> = &lt;fields.DateTime(default=&lt;marshmallow.missing&gt;, attribute=None, validate=None, required=False, load_only=False, dump_only=False, missing=2019-01-25T09:42:10.634415, allow_none=False, error_messages={'required': 'Missing data for required field.', 'type': 'Invalid input type.', 'null': 'Field may not be null.', 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid datetime.', 'format': '&quot;{input}&quot; cannot be formatted as a datetime.'})&gt;</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.updated_at" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.updated_at">
+<span class="sig-name descname"><span class="pre">updated_at</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;fields.DateTime(default=&lt;marshmallow.missing&gt;,</span> <span class="pre">attribute=None,</span> <span class="pre">validate=None,</span> <span class="pre">required=False,</span> <span class="pre">load_only=False,</span> <span class="pre">dump_only=False,</span> <span class="pre">missing=2023-04-28T10:08:53.551540,</span> <span class="pre">allow_none=False,</span> <span class="pre">error_messages={'required':</span> <span class="pre">'Missing</span> <span class="pre">data</span> <span class="pre">for</span> <span class="pre">required</span> <span class="pre">field.',</span> <span class="pre">'type':</span> <span class="pre">'Invalid</span> <span class="pre">input</span> <span class="pre">type.',</span> <span class="pre">'null':</span> <span class="pre">'Field</span> <span class="pre">may</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">null.',</span> <span class="pre">'validator_failed':</span> <span class="pre">'Invalid</span> <span class="pre">value.',</span> <span class="pre">'invalid':</span> <span class="pre">'Not</span> <span class="pre">a</span> <span class="pre">valid</span> <span class="pre">datetime.',</span> <span class="pre">'format':</span> <span class="pre">'&quot;{input}&quot;</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">formatted</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">datetime.'})&gt;</span></em><a class="headerlink" href="#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.updated_at" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="rse_db.data_patterns.CreatedAtMixin">
-<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">CreatedAtMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAtMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAtMixin" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="rse_db.data_patterns.CreatedAtMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rse_db.data_patterns.</span></span><span class="sig-name descname"><span class="pre">CreatedAtMixin</span></span><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAtMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAtMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="attribute">
-<dt id="rse_db.data_patterns.CreatedAtMixin.created_at">
-<code class="descname">created_at</code><em class="property"> = Column(None, DateTime(), table=None, server_default=DefaultClause(&lt;sqlalchemy.sql.functions.now at 0x7f0dc6c18dd8; now&gt;, for_update=False))</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAtMixin.created_at" title="Permalink to this definition">¶</a></dt>
+<p>DB Model with a created at column by that is populated with the current time by default</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rse_db.data_patterns.CreatedAtMixin.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Column(None,</span> <span class="pre">DateTime(),</span> <span class="pre">table=None,</span> <span class="pre">server_default=DefaultClause(&lt;sqlalchemy.sql.functions.now</span> <span class="pre">at</span> <span class="pre">0x102b54070;</span> <span class="pre">now&gt;,</span> <span class="pre">for_update=False))</span></em><a class="headerlink" href="#rse_db.data_patterns.CreatedAtMixin.created_at" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="rse_db.data_patterns.CreatedAtSchemaMixin">
-<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">CreatedAtSchemaMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAtSchemaMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAtSchemaMixin" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="rse_db.data_patterns.CreatedAtSchemaMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rse_db.data_patterns.</span></span><span class="sig-name descname"><span class="pre">CreatedAtSchemaMixin</span></span><a class="reference internal" href="_modules/rse_db/data_patterns.html#CreatedAtSchemaMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.CreatedAtSchemaMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="attribute">
-<dt id="rse_db.data_patterns.CreatedAtSchemaMixin.created_at">
-<code class="descname">created_at</code><em class="property"> = &lt;fields.DateTime(default=datetime.datetime(2019, 1, 25, 9, 42, 10, 633898), attribute=None, validate=None, required=False, load_only=False, dump_only=False, missing=&lt;marshmallow.missing&gt;, allow_none=False, error_messages={'required': 'Missing data for required field.', 'type': 'Invalid input type.', 'null': 'Field may not be null.', 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid datetime.', 'format': '&quot;{input}&quot; cannot be formatted as a datetime.'})&gt;</em><a class="headerlink" href="#rse_db.data_patterns.CreatedAtSchemaMixin.created_at" title="Permalink to this definition">¶</a></dt>
+<p>Marshmallow Schema mixing to match CreatedAtMixin DB Model</p>
+<dl class="simple">
+<dt>See Also:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#rse_db.data_patterns.CreatedAtMixin" title="rse_db.data_patterns.CreatedAtMixin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rse_db.data_patterns.CreatedAtMixin()</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rse_db.data_patterns.CreatedAtSchemaMixin.created_at">
+<span class="sig-name descname"><span class="pre">created_at</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;fields.DateTime(default=datetime.datetime(2023,</span> <span class="pre">4,</span> <span class="pre">28,</span> <span class="pre">10,</span> <span class="pre">8,</span> <span class="pre">53,</span> <span class="pre">551486),</span> <span class="pre">attribute=None,</span> <span class="pre">validate=None,</span> <span class="pre">required=False,</span> <span class="pre">load_only=False,</span> <span class="pre">dump_only=False,</span> <span class="pre">missing=&lt;marshmallow.missing&gt;,</span> <span class="pre">allow_none=False,</span> <span class="pre">error_messages={'required':</span> <span class="pre">'Missing</span> <span class="pre">data</span> <span class="pre">for</span> <span class="pre">required</span> <span class="pre">field.',</span> <span class="pre">'type':</span> <span class="pre">'Invalid</span> <span class="pre">input</span> <span class="pre">type.',</span> <span class="pre">'null':</span> <span class="pre">'Field</span> <span class="pre">may</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">null.',</span> <span class="pre">'validator_failed':</span> <span class="pre">'Invalid</span> <span class="pre">value.',</span> <span class="pre">'invalid':</span> <span class="pre">'Not</span> <span class="pre">a</span> <span class="pre">valid</span> <span class="pre">datetime.',</span> <span class="pre">'format':</span> <span class="pre">'&quot;{input}&quot;</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">formatted</span> <span class="pre">as</span> <span class="pre">a</span> <span class="pre">datetime.'})&gt;</span></em><a class="headerlink" href="#rse_db.data_patterns.CreatedAtSchemaMixin.created_at" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="rse_db.data_patterns.IdMixin">
-<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">IdMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#IdMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.IdMixin" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="rse_db.data_patterns.IdMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rse_db.data_patterns.</span></span><span class="sig-name descname"><span class="pre">IdMixin</span></span><a class="reference internal" href="_modules/rse_db/data_patterns.html#IdMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.IdMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="attribute">
-<dt id="rse_db.data_patterns.IdMixin.id">
-<code class="descname">id</code><em class="property"> = Column(None, Integer(), table=None, primary_key=True, nullable=False)</em><a class="headerlink" href="#rse_db.data_patterns.IdMixin.id" title="Permalink to this definition">¶</a></dt>
+<p>Simple ID column for SqlAlchemy</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rse_db.data_patterns.IdMixin.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Column(None,</span> <span class="pre">Integer(),</span> <span class="pre">table=None,</span> <span class="pre">primary_key=True,</span> <span class="pre">nullable=False)</span></em><a class="headerlink" href="#rse_db.data_patterns.IdMixin.id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="rse_db.data_patterns.IdSchemaMixin">
-<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">IdSchemaMixin</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#IdSchemaMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.IdSchemaMixin" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="rse_db.data_patterns.IdSchemaMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rse_db.data_patterns.</span></span><span class="sig-name descname"><span class="pre">IdSchemaMixin</span></span><a class="reference internal" href="_modules/rse_db/data_patterns.html#IdSchemaMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.IdSchemaMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="attribute">
-<dt id="rse_db.data_patterns.IdSchemaMixin.id">
-<code class="descname">id</code><em class="property"> = &lt;fields.Integer(default=&lt;marshmallow.missing&gt;, attribute=None, validate=&lt;Range(min=0, max=None, error=None)&gt;, required=True, load_only=False, dump_only=False, missing=&lt;marshmallow.missing&gt;, allow_none=False, error_messages={'required': 'Missing data for required field.', 'type': 'Invalid input type.', 'null': 'Field may not be null.', 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid integer.'})&gt;</em><a class="headerlink" href="#rse_db.data_patterns.IdSchemaMixin.id" title="Permalink to this definition">¶</a></dt>
+<p>Marshmallow Schema mixing to match IdMixin DB Model</p>
+<dl class="simple">
+<dt>See Also:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#rse_db.data_patterns.IdMixin" title="rse_db.data_patterns.IdMixin"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rse_db.data_patterns.IdMixin()</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rse_db.data_patterns.IdSchemaMixin.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;fields.Integer(default=&lt;marshmallow.missing&gt;,</span> <span class="pre">attribute=None,</span> <span class="pre">validate=&lt;Range(min=0,</span> <span class="pre">max=None,</span> <span class="pre">error=None)&gt;,</span> <span class="pre">required=True,</span> <span class="pre">load_only=False,</span> <span class="pre">dump_only=False,</span> <span class="pre">missing=&lt;marshmallow.missing&gt;,</span> <span class="pre">allow_none=False,</span> <span class="pre">error_messages={'required':</span> <span class="pre">'Missing</span> <span class="pre">data</span> <span class="pre">for</span> <span class="pre">required</span> <span class="pre">field.',</span> <span class="pre">'type':</span> <span class="pre">'Invalid</span> <span class="pre">input</span> <span class="pre">type.',</span> <span class="pre">'null':</span> <span class="pre">'Field</span> <span class="pre">may</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">null.',</span> <span class="pre">'validator_failed':</span> <span class="pre">'Invalid</span> <span class="pre">value.',</span> <span class="pre">'invalid':</span> <span class="pre">'Not</span> <span class="pre">a</span> <span class="pre">valid</span> <span class="pre">integer.'})&gt;</span></em><a class="headerlink" href="#rse_db.data_patterns.IdSchemaMixin.id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="rse_db.data_patterns.RSEBasicReadWriteModel">
-<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">RSEBasicReadWriteModel</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEBasicReadWriteModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEBasicReadWriteModel" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="rse_db.data_patterns.RSEBasicReadWriteModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rse_db.data_patterns.</span></span><span class="sig-name descname"><span class="pre">RSEBasicReadWriteModel</span></span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEBasicReadWriteModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.RSEBasicReadWriteModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#rse_db.data_patterns.RSEReadOnlyModel" title="rse_db.data_patterns.RSEReadOnlyModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">rse_db.data_patterns.RSEReadOnlyModel</span></code></a></p>
-<dl class="classmethod">
-<dt id="rse_db.data_patterns.RSEBasicReadWriteModel.delete_by_pk">
-<em class="property">classmethod </em><code class="descname">delete_by_pk</code><span class="sig-paren">(</span><em>*args</em>, <em>commit=False</em>, <em>session=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEBasicReadWriteModel.delete_by_pk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEBasicReadWriteModel.delete_by_pk" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="rse_db.data_patterns.RSEBasicReadWriteModel.commit">
+<span class="sig-name descname"><span class="pre">commit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEBasicReadWriteModel.commit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.RSEBasicReadWriteModel.commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience method to allow saving an object directly</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Self - This is useful in Requests where we want to return model for Serialization after saving</p>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="classmethod">
-<dt id="rse_db.data_patterns.RSEBasicReadWriteModel.save">
-<em class="property">classmethod </em><code class="descname">save</code><span class="sig-paren">(</span><em>new_instance</em>, <em>commit=True</em>, <em>session=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEBasicReadWriteModel.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEBasicReadWriteModel.save" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="rse_db.data_patterns.RSEBasicReadWriteModel.delete_by_pk">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_by_pk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEBasicReadWriteModel.delete_by_pk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.RSEBasicReadWriteModel.delete_by_pk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete an item by a primary key(s)
+Args:</p>
+<blockquote>
+<div><p><a href="#id1"><span class="problematic" id="id2">*</span></a>args: List of id(s) in the definition order of their source model
+commit: Flag to autocommit after saving. The default is true. For transactions you can resuse the same</p>
+<blockquote>
+<div><p>session and set this to False. Then a session commit after all deletions have been executed will
+be the most efficient</p>
+</div></blockquote>
+<p>session: Optional db session object</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rse_db.data_patterns.RSEBasicReadWriteModel.save">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rse_db.data_patterns.RSEBasicReadWriteModel" title="rse_db.data_patterns.RSEBasicReadWriteModel"><span class="pre">rse_db.data_patterns.RSEBasicReadWriteModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEBasicReadWriteModel.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.RSEBasicReadWriteModel.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a new copy of an item.</p>
+<dl>
+<dt>Args:</dt><dd><p>new_instance: an instance of the item to be saved
+commit: Flag to autocommit after saving. The default is true. For large sets of insertions, you will</p>
+<blockquote>
+<div><p>want to reuse the session and only commit the transaction after all items have been “saved”</p>
+</div></blockquote>
+<p>session: Optional DB session to use</p>
+</dd>
+<dt>Returns:</dt><dd><p>Copy of new instance that was Saved</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="rse_db.data_patterns.RSEReadOnlyModel">
-<em class="property">class </em><code class="descclassname">rse_db.data_patterns.</code><code class="descname">RSEReadOnlyModel</code><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="rse_db.data_patterns.RSEReadOnlyModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rse_db.data_patterns.</span></span><span class="sig-name descname"><span class="pre">RSEReadOnlyModel</span></span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="classmethod">
-<dt id="rse_db.data_patterns.RSEReadOnlyModel.find_all">
-<em class="property">classmethod </em><code class="descname">find_all</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_all" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rse_db.data_patterns.RSEReadOnlyModel.find_all">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">find_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_all" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="classmethod">
-<dt id="rse_db.data_patterns.RSEReadOnlyModel.find_first">
-<em class="property">classmethod </em><code class="descname">find_first</code><span class="sig-paren">(</span><em>*args</em>, <em>order=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_first"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_first" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="rse_db.data_patterns.RSEReadOnlyModel.find_first">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">find_first</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_first"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_first" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the first item that matches a query</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p><a href="#id3"><span class="problematic" id="id4">*</span></a>args: List of id(s)
+order: Optional order to sort the results. See order_by in SqlAlchemy docs
+<a href="#id5"><span class="problematic" id="id6">**</span></a>kwargs: List of additional items to pass to filter_by</p>
+</dd>
+<dt>Returns:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.filter_by">https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.filter_by</a></p></li>
+<li><p><a class="reference external" href="https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.order_by">https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.order_by</a></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rse_db.data_patterns.RSEReadOnlyModel.find_one">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">find_one</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_one"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find One specific item by primary keys and additional set of filter options to be passed to filter_by</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p><a href="#id7"><span class="problematic" id="id8">*</span></a>args: List of id(s)
+<a href="#id9"><span class="problematic" id="id10">**</span></a>kwargs: List of additional items to pass to filter_by</p>
+</dd>
+<dt>Returns:</dt><dd><p>The specific model if Found</p>
+</dd>
+<dt>See Also:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.filter_by">https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.filter_by</a></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rse_db.data_patterns.RSEReadOnlyModel.find_one_or_none">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">find_one_or_none</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_one_or_none"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_one_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find One specific item by primary keys and additional set of filter options to be passed to filter_by.
+If an item cannot be found, the value None is returned</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p><a href="#id11"><span class="problematic" id="id12">*</span></a>args: List of id(s)
+<a href="#id13"><span class="problematic" id="id14">**</span></a>kwargs: List of additional items to pass to filter_by</p>
+</dd>
+<dt>Returns:</dt><dd><p>Model of object or None</p>
+</dd>
+<dt>See Also:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.filter_by">https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.filter_by</a></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rse_db.data_patterns.RSEReadOnlyModel.get_by_pk">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_by_pk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.get_by_pk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.get_by_pk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lookup model by Primary Key(s)</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p><a href="#id15"><span class="problematic" id="id16">*</span></a>args: A list of keys. This should match the definition order of the specified Ids within the model</p>
+</dd>
+<dt>Raises:</dt><dd><p>NoResultFound if a record with specified id(s) cannot be found</p>
+</dd>
+<dt>Returns:</dt><dd><p>Instance of the model if Found</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.data_patterns.get_filter_by_arguments">
+<span class="sig-prename descclassname"><span class="pre">rse_db.data_patterns.</span></span><span class="sig-name descname"><span class="pre">get_filter_by_arguments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#get_filter_by_arguments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.get_filter_by_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempts to validate and build a set of generic filter arguments for the RSEReadOnlyModel models</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>args: Args to map to keys
+keys: Keys to map args too
+kwargs:  Set of additional arguments passed to filter</p>
+</dd>
+<dt>Returns:</dt><dd><p>Dict containing a mapping of keyword arguments to be used when calling “.filter” on an SqlAlchmey Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.data_patterns.model_to_str">
+<span class="sig-prename descclassname"><span class="pre">rse_db.data_patterns.</span></span><span class="sig-name descname"><span class="pre">model_to_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'utf8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'strict'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#model_to_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.data_patterns.model_to_str" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="classmethod">
-<dt id="rse_db.data_patterns.RSEReadOnlyModel.find_one">
-<em class="property">classmethod </em><code class="descname">find_one</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_one"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_one" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="module-rse_db.decorators">
+<span id="rse-db-decorators-module"></span><h2>rse_db.decorators module<a class="headerlink" href="#module-rse_db.decorators" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.decorators.is_json_array">
+<span class="sig-prename descclassname"><span class="pre">rse_db.decorators.</span></span><span class="sig-name descname"><span class="pre">is_json_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">collections.abc.Callable</span></span></span><a class="reference internal" href="_modules/rse_db/decorators.html#is_json_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.decorators.is_json_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator that validates that a specific field of a Marshmallow Schmea is a JSON Array</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>field: Field to validate</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.decorators.is_schema_match">
+<span class="sig-prename descclassname"><span class="pre">rse_db.decorators.</span></span><span class="sig-name descname"><span class="pre">is_schema_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/decorators.html#is_schema_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.decorators.is_schema_match" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="classmethod">
-<dt id="rse_db.data_patterns.RSEReadOnlyModel.find_one_or_none">
-<em class="property">classmethod </em><code class="descname">find_one_or_none</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.find_one_or_none"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.find_one_or_none" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+</section>
+<section id="module-rse_db.extensions">
+<span id="rse-db-extensions-module"></span><h2>rse_db.extensions module<a class="headerlink" href="#module-rse_db.extensions" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="rse_db.extensions.RSEBaseQuery">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rse_db.extensions.</span></span><span class="sig-name descname"><span class="pre">RSEBaseQuery</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/extensions.html#RSEBaseQuery"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.extensions.RSEBaseQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.query.Query</span></code></p>
+</dd></dl>
 
-<dl class="classmethod">
-<dt id="rse_db.data_patterns.RSEReadOnlyModel.get_by_pk">
-<em class="property">classmethod </em><code class="descname">get_by_pk</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#RSEReadOnlyModel.get_by_pk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.RSEReadOnlyModel.get_by_pk" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="rse_db.extensions.RSEQueryBaseModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rse_db.extensions.</span></span><span class="sig-name descname"><span class="pre">RSEQueryBaseModel</span></span><a class="reference internal" href="_modules/rse_db/extensions.html#RSEQueryBaseModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.extensions.RSEQueryBaseModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="rse_db.extensions.RSEQueryBaseModel.query">
+<span class="sig-name descname"><span class="pre">query</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#rse_db.extensions.RSEQueryBaseModel.query" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
-<dl class="function">
-<dt id="rse_db.data_patterns.get_filter_by_arguments">
-<code class="descclassname">rse_db.data_patterns.</code><code class="descname">get_filter_by_arguments</code><span class="sig-paren">(</span><em>args</em>, <em>keys</em>, <em>kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#get_filter_by_arguments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.get_filter_by_arguments" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="rse_db.extensions.RSEQueryProperty">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rse_db.extensions.</span></span><span class="sig-name descname"><span class="pre">RSEQueryProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">get_session_callback=&lt;function</span> <span class="pre">get_session&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/extensions.html#RSEQueryProperty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.extensions.RSEQueryProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.extensions.get_query_base_model">
+<span class="sig-prename descclassname"><span class="pre">rse_db.extensions.</span></span><span class="sig-name descname"><span class="pre">get_query_base_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">get_session_callback=&lt;function</span> <span class="pre">get_session&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/extensions.html#get_query_base_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.extensions.get_query_base_model" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
-<dt id="rse_db.data_patterns.model_to_str">
-<code class="descclassname">rse_db.data_patterns.</code><code class="descname">model_to_str</code><span class="sig-paren">(</span><em>x</em>, <em>charset='utf8'</em>, <em>errors='strict'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/data_patterns.html#model_to_str"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.data_patterns.model_to_str" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.extensions.get_session">
+<span class="sig-prename descclassname"><span class="pre">rse_db.extensions.</span></span><span class="sig-name descname"><span class="pre">get_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/extensions.html#get_session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.extensions.get_session" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</div>
-<div class="section" id="module-rse_db.decorators">
-<span id="rse-db-decorators-module"></span><h2>rse_db.decorators module<a class="headerlink" href="#module-rse_db.decorators" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="rse_db.decorators.is_json_array">
-<code class="descclassname">rse_db.decorators.</code><code class="descname">is_json_array</code><span class="sig-paren">(</span><em>field</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/decorators.html#is_json_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.decorators.is_json_array" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.extensions.get_session_maker">
+<span class="sig-prename descclassname"><span class="pre">rse_db.extensions.</span></span><span class="sig-name descname"><span class="pre">get_session_maker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/extensions.html#get_session_maker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.extensions.get_session_maker" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
-<dt id="rse_db.decorators.is_schema_match">
-<code class="descclassname">rse_db.decorators.</code><code class="descname">is_schema_match</code><span class="sig-paren">(</span><em>cls</em>, <em>schema</em>, <em>field</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/decorators.html#is_schema_match"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#rse_db.decorators.is_schema_match" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="module-rse_db.utils">
+<span id="rse-db-utils-module"></span><h2>rse_db.utils module<a class="headerlink" href="#module-rse_db.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.utils.auto_generate_schemas">
+<span class="sig-prename descclassname"><span class="pre">rse_db.utils.</span></span><span class="sig-name descname"><span class="pre">auto_generate_schemas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/utils.html#auto_generate_schemas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.utils.auto_generate_schemas" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</div>
-<div class="section" id="rse-db-extensions-module">
-<h2>rse_db.extensions module<a class="headerlink" href="#rse-db-extensions-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="rse-db-utils-module">
-<h2>rse_db.utils module<a class="headerlink" href="#rse-db-utils-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-rse_db">
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.utils.get_cli_commands">
+<span class="sig-prename descclassname"><span class="pre">rse_db.utils.</span></span><span class="sig-name descname"><span class="pre">get_cli_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">declarative_base_func:</span> <span class="pre">typing.Callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">get_declarative_base&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/utils.html#get_cli_commands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.utils.get_cli_commands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds CLI commands for creating db, listing tables defined, and dropping tables</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app</strong> – App to add CLI commands to</p></li>
+<li><p><strong>declarative_base_func</strong> – The function that fetch the declarative_base object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.utils.get_db">
+<span class="sig-prename descclassname"><span class="pre">rse_db.utils.</span></span><span class="sig-name descname"><span class="pre">get_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flask_app=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_models_func:</span> <span class="pre">typing.Callable</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">declarative_base_func:</span> <span class="pre">typing.Callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">get_declarative_base&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_string:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_cli_commands=True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/utils.html#get_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.utils.get_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a DB object for flask. The function first attempts to load flask_sqlalchemy. If that is present,
+it will</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flask_app</strong> – Pass a flask application to the app if desired. Otherwise, get_application from rse_api will be called</p></li>
+<li><p><strong>get_models_func</strong> – Function to call after loading the DB connection to load all the model files</p></li>
+<li><p><strong>declarative_base_func</strong> – Function to call when loading the DB the first time to get a declartive base object.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This function ideally should function as a singleton
+:param connection_string: Any SQLAlchemy connection string. See <a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/engines.html">https://docs.sqlalchemy.org/en/latest/core/engines.html</a>
+:return: Either a SQLAlchemy or Engine object representing a connection to the db
+:rtype: Union[flask_sqlalchemy.SQLAlchemy,sqlalchemy.engine.Engine]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.utils.get_declarative_base">
+<span class="sig-prename descclassname"><span class="pre">rse_db.utils.</span></span><span class="sig-name descname"><span class="pre">get_declarative_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/utils.html#get_declarative_base"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.utils.get_declarative_base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default function for getting the declarative base class. There are cases you may want to do more to the class
+in which case you want to define another function in lieu of this one
+:return:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.utils.get_engine">
+<span class="sig-prename descclassname"><span class="pre">rse_db.utils.</span></span><span class="sig-name descname"><span class="pre">get_engine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sqlalchemy.engine.base.Engine</span></span></span><a class="reference internal" href="_modules/rse_db/utils.html#get_engine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.utils.get_engine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns engine object from DB connection. This object could be a sqlalchemy.engine.Engine in which case we just
+return, otherwise, it could be a SQLAlchemy object, in which case we return the .engine attribute of the db
+:param db:
+:type db: Union[flask_sqlalchemy.SQLAlchemy,sqlalchemy.engine.Engine]
+:return: Engine object</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.utils.get_flask_marshmallow">
+<span class="sig-prename descclassname"><span class="pre">rse_db.utils.</span></span><span class="sig-name descname"><span class="pre">get_flask_marshmallow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">declarative_base_func:</span> <span class="pre">typing.Callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">get_declarative_base&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/utils.html#get_flask_marshmallow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.utils.get_flask_marshmallow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the FlaskMarshmallow object. This is needed with Flask_Sqlalchmey to properly setup bindings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app</strong> – App to add flask_marshmallow to</p></li>
+<li><p><strong>db</strong> (<em>SQLAlchemy</em>) – db object to bind query property to per session</p></li>
+<li><p><strong>declarative_base_func</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>flask_marshmallow object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>flask_marshmallow.Marshmallow</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.utils.get_or_create">
+<span class="sig-prename descclassname"><span class="pre">rse_db.utils.</span></span><span class="sig-name descname"><span class="pre">get_or_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/utils.html#get_or_create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.utils.get_or_create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rse_db.utils.setup_schema">
+<span class="sig-prename descclassname"><span class="pre">rse_db.utils.</span></span><span class="sig-name descname"><span class="pre">setup_schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Base</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/rse_db/utils.html#setup_schema"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#rse_db.utils.setup_schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setups Marshmallow schema for any SqlAlchmey objects. This will have the absolutely minimal definitions and shold
+be use for initial development but most likely should not be used for final development</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Base</strong> – Base object(Delcarative base)</p></li>
+<li><p><strong>session</strong> – Session of DB</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Setup schema function that should be a called by ‘after_configured’ events</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-rse_db">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-rse_db" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -221,7 +494,7 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="readme.html">rse_db</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
@@ -247,17 +520,15 @@
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
 
 
 
@@ -274,8 +545,8 @@
       &copy;.
 
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
 
       |
       <a href="_sources/rse_db.rst.txt"

@@ -1,480 +1,394 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-    <title>rse_db.data_patterns &#8212; rse_db 1.0.1 documentation</title>
-    <link href="../../_static/alabaster.css" rel="stylesheet" type="text/css"/>
-    <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"
-            type="text/javascript"></script>
-    <script src="../../_static/jquery.js" type="text/javascript"></script>
-    <script src="../../_static/underscore.js" type="text/javascript"></script>
-    <script src="../../_static/doctools.js" type="text/javascript"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-            type="text/javascript"></script>
-    <link href="../../genindex.html" rel="index" title="Index"/>
-    <link href="../../search.html" rel="search" title="Search"/>
+<!DOCTYPE html>
 
-    <link href="../../_static/custom.css" rel="stylesheet" type="text/css"/>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rse_db.data_patterns &#8212; rse_db 1.0.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
 
 
-    <meta content="width=device-width, initial-scale=0.9, maximum-scale=0.9" name="viewport"/>
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-</head>
-<body>
+  </head><body>
 
 
-<div class="document">
-    <div class="documentwrapper">
+    <div class="document">
+      <div class="documentwrapper">
         <div class="bodywrapper">
 
 
-            <div class="body" role="main">
+          <div class="body" role="main">
 
-                <h1>Source code for rse_db.data_patterns</h1>
-                <div class="highlight"><pre>
+  <h1>Source code for rse_db.data_patterns</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">importlib</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span
-                        class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="k">import</span> <span
-                        class="n">Column</span><span class="p">,</span> <span class="n">DateTime</span><span
-                        class="p">,</span> <span class="n">func</span><span class="p">,</span> <span
-                        class="n">Integer</span><span class="p">,</span> <span class="n">FetchedValue</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy.orm.exc</span> <span class="k">import</span> <span class="n">NoResultFound</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
-<span class="n">HAS_MARSHMALLOW</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span
-                        class="n">find_loader</span><span class="p">(</span><span
-                        class="s1">&#39;marshmallow&#39;</span><span class="p">)</span> <span class="ow">is</span> <span
-                        class="ow">not</span> <span class="kc">None</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">Integer</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm.exc</span> <span class="kn">import</span> <span class="n">NoResultFound</span>
 
-<div class="viewcode-block" id="IdMixin"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.IdMixin">[docs]</a><span
-        class="k">class</span> <span class="nc">IdMixin</span><span class="p">(</span><span
-        class="nb">object</span><span class="p">):</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span
-            class="n">Integer</span><span class="p">,</span> <span class="n">autoincrement</span><span
-            class="o">=</span><span class="kc">True</span><span class="p">,</span> <span
-            class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span
-            class="p">)</span></div>
+<span class="n">HAS_MARSHMALLOW</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">find_loader</span><span class="p">(</span><span class="s2">&quot;marshmallow&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 
 
-<div class="viewcode-block" id="CreatedAtMixin"><a class="viewcode-back"
-                                                   href="../../rse_db.html#rse_db.data_patterns.CreatedAtMixin">[docs]</a><span
-        class="k">class</span> <span class="nc">CreatedAtMixin</span><span class="p">(</span><span
-        class="nb">object</span><span class="p">):</span>
-    <span class="n">created_at</span> <span class="o">=</span> <span class="n">Column</span><span
-            class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span
-            class="n">server_default</span><span class="o">=</span><span class="n">func</span><span
-            class="o">.</span><span class="n">now</span><span class="p">())</span></div>
+<div class="viewcode-block" id="IdMixin"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.IdMixin">[docs]</a><span class="k">class</span> <span class="nc">IdMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simple ID column for SqlAlchemy</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">autoincrement</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="CreatedAndUpdatedAtMixin"><a class="viewcode-back"
-                                                             href="../../rse_db.html#rse_db.data_patterns.CreatedAndUpdatedAtMixin">[docs]</a><span
-        class="k">class</span> <span class="nc">CreatedAndUpdatedAtMixin</span><span class="p">(</span><span class="nb">object</span><span
-        class="p">):</span>
-    <span class="n">created_at</span> <span class="o">=</span> <span class="n">Column</span><span
-            class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span
-            class="n">server_default</span><span class="o">=</span><span class="n">func</span><span
-            class="o">.</span><span class="n">now</span><span class="p">())</span>
-    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">Column</span><span
-            class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span
-            class="n">server_default</span><span class="o">=</span><span class="n">func</span><span
-            class="o">.</span><span class="n">now</span><span class="p">(),</span> <span
-            class="n">server_onupdate</span><span class="o">=</span><span class="n">func</span><span
-            class="o">.</span><span class="n">now</span><span class="p">())</span></div>
+<div class="viewcode-block" id="CreatedAtMixin"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.CreatedAtMixin">[docs]</a><span class="k">class</span> <span class="nc">CreatedAtMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DB Model with a created at column by that is populated with the current time by default</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">server_default</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">now</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="CreatedAndUpdatedAtMixin"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.CreatedAndUpdatedAtMixin">[docs]</a><span class="k">class</span> <span class="nc">CreatedAndUpdatedAtMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DB Model with a created at and updated at columns. Created at is set to the current time when object is inserted</span>
+<span class="sd">    into db and updated at is set to the current time when an object is saved/inserted</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">server_default</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">server_default</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">server_onupdate</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">now</span><span class="p">())</span></div>
 
 
 <span class="c1"># If we have marshmallow, declare schema mixins as well</span>
 <span class="k">if</span> <span class="n">HAS_MARSHMALLOW</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">marshmallow</span> <span class="k">import</span> <span class="n">fields</span><span
-                        class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">post_load</span><span
-                        class="p">,</span> <span class="n">ValidationError</span>
+    <span class="kn">from</span> <span class="nn">marshmallow</span> <span class="kn">import</span> <span class="n">fields</span><span class="p">,</span> <span class="n">validate</span><span class="p">,</span> <span class="n">post_load</span><span class="p">,</span> <span class="n">ValidationError</span>
 
-<div class="viewcode-block" id="IdSchemaMixin"><a class="viewcode-back"
-                                                  href="../../rse_db.html#rse_db.data_patterns.IdSchemaMixin">[docs]</a>    <span
-        class="k">class</span> <span class="nc">IdSchemaMixin</span><span class="p">(</span><span
-        class="nb">object</span><span class="p">):</span>
-        <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span
-            class="n">Integer</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span
-            class="kc">True</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span
-            class="n">validate</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span
-            class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span></div>
+<div class="viewcode-block" id="IdSchemaMixin"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.IdSchemaMixin">[docs]</a>    <span class="k">class</span> <span class="nc">IdSchemaMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Marshmallow Schema mixing to match IdMixin DB Model</span>
 
+<span class="sd">        See Also:</span>
+<span class="sd">            - :meth:`rse_db.data_patterns.IdMixin`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="CreatedAtSchemaMixin"><a class="viewcode-back"
-                                                         href="../../rse_db.html#rse_db.data_patterns.CreatedAtSchemaMixin">[docs]</a>    <span
-        class="k">class</span> <span class="nc">CreatedAtSchemaMixin</span><span class="p">(</span><span class="nb">object</span><span
-        class="p">):</span>
-        <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span
-            class="n">DateTime</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span
-            class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span
-            class="n">allow_none</span><span class="o">=</span><span class="kc">False</span><span
-            class="p">)</span></div>
+        <span class="nb">id</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Integer</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="o">.</span><span class="n">Range</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span></div>
 
+<div class="viewcode-block" id="CreatedAtSchemaMixin"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.CreatedAtSchemaMixin">[docs]</a>    <span class="k">class</span> <span class="nc">CreatedAtSchemaMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Marshmallow Schema mixing to match CreatedAtMixin DB Model</span>
 
-<div class="viewcode-block" id="CreatedAndUpdatedAtSchemaMixin"><a class="viewcode-back"
-                                                                   href="../../rse_db.html#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin">[docs]</a>    <span
-        class="k">class</span> <span class="nc">CreatedAndUpdatedAtSchemaMixin</span><span class="p">(</span><span
-        class="nb">object</span><span class="p">):</span>
-        <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span
-            class="n">DateTime</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span
-            class="s1">&#39;iso&#39;</span><span class="p">,</span> <span class="n">missing</span><span
-            class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span
-            class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span> <span
-            class="n">dallow_none</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">updated_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span
-            class="n">DateTime</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span
-            class="s1">&#39;iso&#39;</span><span class="p">,</span> <span class="n">missing</span><span
-            class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span
-            class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span> <span
-            class="n">allow_none</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="sd">        See Also:</span>
+<span class="sd">            - :meth:`rse_db.data_patterns.CreatedAtMixin`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created"><a
-        class="viewcode-back"
-        href="../../rse_db.html#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created">[docs]</a>        <span
-        class="nd">@post_load</span>
-        <span class="k">def</span> <span class="nf">ensure_updated_is_greater_than_created</span><span
-            class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span
-            class="p">):</span>
-            <span class="k">if</span> <span class="s1">&#39;updated_at&#39;</span> <span class="ow">in</span> <span
-            class="n">item</span> <span class="ow">and</span> <span class="s1">&#39;created_at&#39;</span> <span
-            class="ow">in</span> <span class="n">item</span><span class="p">:</span>
-                <span class="n">updated_at</span> <span class="o">=</span> <span class="n">datetime</span><span
-            class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span
-            class="n">item</span><span class="p">[</span><span class="s1">&#39;updated_at&#39;</span><span
-            class="p">])</span> <span class="k">if</span> <span class="nb">isinstance</span><span
-            class="p">(</span><span class="n">item</span><span class="p">[</span><span
-            class="s1">&#39;updated_at&#39;</span><span class="p">],</span> <span class="nb">str</span><span
-            class="p">)</span> <span class="k">else</span> <span class="n">item</span><span class="p">[</span><span
-            class="s1">&#39;updated_at&#39;</span><span class="p">]</span>
-                <span class="n">created_at</span> <span class="o">=</span> <span class="n">datetime</span><span
-            class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span
-            class="n">item</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span
-            class="p">])</span> <span class="k">if</span> <span class="nb">isinstance</span><span
-            class="p">(</span><span class="n">item</span><span class="p">[</span><span
-            class="s1">&#39;updated_at&#39;</span><span class="p">],</span> <span class="nb">str</span><span
-            class="p">)</span> <span class="k">else</span> <span class="n">item</span><span class="p">[</span><span
-            class="s1">&#39;created_at&#39;</span><span class="p">]</span>
-                <span class="k">if</span> <span class="n">updated_at</span> <span class="o">&lt;</span> <span class="n">created_at</span><span
-            class="p">:</span>
+        <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">allow_none</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CreatedAndUpdatedAtSchemaMixin"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin">[docs]</a>    <span class="k">class</span> <span class="nc">CreatedAndUpdatedAtSchemaMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Marshmallow Schema mixing to match CreatedAtMixin DB Model</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            - :meth:`rse_db.data_patterns.CreatedAtMixin`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">created_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;iso&quot;</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span> <span class="n">allow_none</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">updated_at</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">DateTime</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;iso&quot;</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span> <span class="n">allow_none</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.CreatedAndUpdatedAtSchemaMixin.ensure_updated_is_greater_than_created">[docs]</a>        <span class="nd">@post_load</span>
+        <span class="k">def</span> <span class="nf">ensure_updated_is_greater_than_created</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Validation method to ensure that updated at is not less than created at</span>
+<span class="sd">            Args:</span>
+<span class="sd">                item: Item we are verifying</span>
+
+<span class="sd">            Returns:</span>
+
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;updated_at&quot;</span> <span class="ow">in</span> <span class="n">item</span> <span class="ow">and</span> <span class="s2">&quot;created_at&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                <span class="n">updated_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;updated_at&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;updated_at&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;updated_at&quot;</span><span class="p">]</span>
+                <span class="n">created_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;created_at&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;updated_at&quot;</span><span class="p">],</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;created_at&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">updated_at</span> <span class="o">&lt;</span> <span class="n">created_at</span><span class="p">:</span>
                     <span class="n">error_message</span> <span class="o">=</span> <span class="s2">&quot;Updated at cannot be greater than created at&quot;</span>
-                    <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">({</span>
-                        <span class="s1">&#39;created_at&#39;</span><span class="p">:</span> <span class="n">error_message</span><span
-            class="p">,</span>
-                        <span class="s1">&#39;updated_at&#39;</span><span class="p">:</span> <span class="n">error_message</span>
-                    <span class="p">})</span>
+                    <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">({</span><span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="n">error_message</span><span class="p">,</span> <span class="s2">&quot;updated_at&quot;</span><span class="p">:</span> <span class="n">error_message</span><span class="p">})</span>
             <span class="k">return</span> <span class="n">item</span></div></div>
 
-
-<div class="viewcode-block" id="model_to_str"><a class="viewcode-back"
-                                                 href="../../rse_db.html#rse_db.data_patterns.model_to_str">[docs]</a>    <span
-        class="k">def</span> <span class="nf">model_to_str</span><span class="p">(</span><span class="n">x</span><span
-        class="p">,</span> <span class="n">charset</span><span class="o">=</span><span
-        class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="n">errors</span><span
-        class="o">=</span><span class="s1">&#39;strict&#39;</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span> <span
-            class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span
-            class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="model_to_str"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.model_to_str">[docs]</a>    <span class="k">def</span> <span class="nf">model_to_str</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">charset</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;strict&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">x</span>
 
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span
-            class="n">x</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span
-            class="n">decode</span><span class="p">(</span><span class="n">charset</span><span class="p">,</span> <span
-            class="n">errors</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">charset</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span
-            class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_filter_by_arguments"><a class="viewcode-back"
-                                                            href="../../rse_db.html#rse_db.data_patterns.get_filter_by_arguments">[docs]</a><span
-        class="k">def</span> <span class="nf">get_filter_by_arguments</span><span class="p">(</span><span
-        class="n">args</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span
-        class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="get_filter_by_arguments"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.get_filter_by_arguments">[docs]</a><span class="k">def</span> <span class="nf">get_filter_by_arguments</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attempts to validate and build a set of generic filter arguments for the RSEReadOnlyModel models</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        args: Args to map to keys</span>
+<span class="sd">        keys: Keys to map args too</span>
+<span class="sd">        kwargs:  Set of additional arguments passed to filter</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Dict containing a mapping of keyword arguments to be used when calling &quot;.filter&quot; on an SqlAlchmey Model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">filter_args</span> <span class="o">=</span> <span class="n">kwargs</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span
-            class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span
-            class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span
-            class="n">args</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;Missing the required arguments. Please provide the following </span><span
-            class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span
-            class="p">([</span><span class="n">k</span><span class="o">.</span><span class="n">key</span> <span
-            class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span
-            class="p">]))</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span
-            class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span
-            class="n">keys</span><span class="p">)):</span>
-            <span class="n">filter_args</span><span class="p">[</span><span class="n">keys</span><span
-            class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">key</span><span
-            class="p">]</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span
-            class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Missing the required arguments. Please provide the following </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">([</span><span class="n">k</span><span class="o">.</span><span class="n">key</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)):</span>
+            <span class="n">filter_args</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">filter_args</span></div>
 
 
-<div class="viewcode-block" id="RSEReadOnlyModel"><a class="viewcode-back"
-                                                     href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel">[docs]</a><span
-        class="k">class</span> <span class="nc">RSEReadOnlyModel</span><span class="p">(</span><span
-        class="nb">object</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">__setattr__</span><span class="p">(</span><span
-            class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span
-            class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="RSEReadOnlyModel"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel">[docs]</a><span class="k">class</span> <span class="nc">RSEReadOnlyModel</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Raise an exception if attempting to assign to an atribute of a &quot;read-only&quot; object</span>
 <span class="sd">        Transient attributes need to be prefixed with &quot;_t_&quot;</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">!=</span> <span
-            class="s2">&quot;_sa_instance_state&quot;</span>
-                <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span
-            class="o">.</span><span class="n">startswith</span><span class="p">(</span><span
-            class="s2">&quot;_t_&quot;</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Trying to assign to </span><span
-            class="si">%s</span><span class="s2"> of a read-only object </span><span class="si">%s</span><span
-            class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span
-            class="p">,</span> <span class="bp">self</span><span class="p">))</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span
-            class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span
-            class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-<div class="viewcode-block" id="RSEReadOnlyModel.get_by_pk"><a class="viewcode-back"
-                                                               href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel.get_by_pk">[docs]</a>    <span
-        class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">get_by_pk</span><span class="p">(</span><span class="bp">cls</span><span
-            class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="sd">        Args:</span>
+<span class="sd">            name: Attribute name</span>
+<span class="sd">            value: Value to set</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError when attemping to set any property since the item is read-only</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;_sa_instance_state&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_t_&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Trying to assign to </span><span class="si">%s</span><span class="s2"> of a read-only object </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="p">))</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RSEReadOnlyModel.get_by_pk"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel.get_by_pk">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_by_pk</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Lookup model by Primary Key(s)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            *args: A list of keys. This should match the definition order of the specified Ids within the model</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            NoResultFound if a record with specified id(s) cannot be found</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Instance of the model if Found</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># assume the arguments are in order by definition order</span>
-        <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span
-            class="bp">cls</span><span class="o">.</span><span class="n">__mapper__</span><span class="o">.</span><span
-            class="n">primary_key</span><span class="p">)</span>
-        <span class="n">filter_args</span> <span class="o">=</span> <span class="n">get_filter_by_arguments</span><span
-            class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">keys</span><span
-            class="p">,</span> <span class="p">{})</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">__mapper__</span><span class="o">.</span><span class="n">primary_key</span><span class="p">)</span>
+        <span class="n">filter_args</span> <span class="o">=</span> <span class="n">get_filter_by_arguments</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="p">{})</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span
-            class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span
-            class="p">(</span><span class="o">**</span><span class="n">filter_args</span><span class="p">)</span><span
-            class="o">.</span><span class="n">one</span><span class="p">()</span>
-        <span class="k">except</span> <span class="n">NoResultFound</span> <span class="k">as</span> <span
-            class="n">e</span><span class="p">:</span>
-            <span class="n">key_str</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span
-            class="n">join</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">{}</span><span
-            class="s1">=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span
-            class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span
-            class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span
-            class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span
-            class="n">filter_args</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
-            <span class="n">plural_message</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span
-            class="k">if</span> <span class="nb">len</span><span class="p">(</span><span
-            class="n">filter_args</span><span class="o">.</span><span class="n">keys</span><span
-            class="p">())</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span
-            class="s1">&#39;s&#39;</span>
-            <span class="k">raise</span> <span class="n">NoResultFound</span><span class="p">(</span><span class="s2">&quot;Could not locate </span><span
-            class="si">{}</span><span class="s2"> by&quot;</span>
-                                <span class="s2">&quot; primary key</span><span class="si">{}</span><span
-            class="s2"> of </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span
-            class="n">format</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span
-            class="vm">__name__</span><span class="p">,</span> <span class="n">plural_message</span><span
-            class="p">,</span> <span class="n">key_str</span><span class="p">))</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="o">**</span><span class="n">filter_args</span><span class="p">)</span><span class="o">.</span><span class="n">one</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">NoResultFound</span><span class="p">:</span>
+            <span class="n">key_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">filter_args</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+            <span class="n">plural_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filter_args</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;s&quot;</span>
+            <span class="k">raise</span> <span class="n">NoResultFound</span><span class="p">(</span><span class="s2">&quot;Could not locate </span><span class="si">{}</span><span class="s2"> by&quot;</span> <span class="s2">&quot; primary key</span><span class="si">{}</span><span class="s2"> of </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">plural_message</span><span class="p">,</span> <span class="n">key_str</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">result</span></div>
 
-<div class="viewcode-block" id="RSEReadOnlyModel.find_one"><a class="viewcode-back"
-                                                              href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel.find_one">[docs]</a>    <span
-        class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">find_one</span><span class="p">(</span><span class="bp">cls</span><span
-            class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span
-            class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span
-            class="bp">cls</span><span class="o">.</span><span class="n">__mapper__</span><span class="o">.</span><span
-            class="n">primary_key</span><span class="p">)</span>
-        <span class="n">filter_args</span> <span class="o">=</span> <span class="n">get_filter_by_arguments</span><span
-            class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">keys</span><span
-            class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span
-            class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span
-            class="o">**</span><span class="n">filter_args</span><span class="p">)</span><span class="o">.</span><span
-            class="n">one</span><span class="p">()</span></div>
+<div class="viewcode-block" id="RSEReadOnlyModel.find_one"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel.find_one">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">find_one</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Find One specific item by primary keys and additional set of filter options to be passed to filter_by</span>
 
-<div class="viewcode-block" id="RSEReadOnlyModel.find_one_or_none"><a class="viewcode-back"
-                                                                      href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel.find_one_or_none">[docs]</a>    <span
-        class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">find_one_or_none</span><span class="p">(</span><span
-            class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span
-            class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span
-            class="bp">cls</span><span class="o">.</span><span class="n">__mapper__</span><span class="o">.</span><span
-            class="n">primary_key</span><span class="p">)</span>
-        <span class="n">filter_args</span> <span class="o">=</span> <span class="n">get_filter_by_arguments</span><span
-            class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">keys</span><span
-            class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span
-            class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span
-            class="o">**</span><span class="n">filter_args</span><span class="p">)</span><span class="o">.</span><span
-            class="n">one_or_none</span><span class="p">()</span></div>
+<span class="sd">        Args:</span>
+<span class="sd">            *args: List of id(s)</span>
+<span class="sd">            **kwargs: List of additional items to pass to filter_by</span>
 
-<div class="viewcode-block" id="RSEReadOnlyModel.find_first"><a class="viewcode-back"
-                                                                href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel.find_first">[docs]</a>    <span
-        class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">find_first</span><span class="p">(</span><span
-            class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span
-            class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span
-            class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span
-            class="p">):</span>
-        <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span
-            class="bp">cls</span><span class="o">.</span><span class="n">__mapper__</span><span class="o">.</span><span
-            class="n">primary_key</span><span class="p">)</span>
-        <span class="n">filter_args</span> <span class="o">=</span> <span class="n">get_filter_by_arguments</span><span
-            class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">keys</span><span
-            class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">query</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span
-            class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span
-            class="o">**</span><span class="n">filter_args</span><span class="p">)</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            The specific model if Found</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            - https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.filter_by</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">__mapper__</span><span class="o">.</span><span class="n">primary_key</span><span class="p">)</span>
+        <span class="n">filter_args</span> <span class="o">=</span> <span class="n">get_filter_by_arguments</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="o">**</span><span class="n">filter_args</span><span class="p">)</span><span class="o">.</span><span class="n">one</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="RSEReadOnlyModel.find_one_or_none"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel.find_one_or_none">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">find_one_or_none</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Find One specific item by primary keys and additional set of filter options to be passed to filter_by.</span>
+<span class="sd">        If an item cannot be found, the value None is returned</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            *args: List of id(s)</span>
+<span class="sd">            **kwargs: List of additional items to pass to filter_by</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Model of object or None</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            - https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.filter_by</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">__mapper__</span><span class="o">.</span><span class="n">primary_key</span><span class="p">)</span>
+        <span class="n">filter_args</span> <span class="o">=</span> <span class="n">get_filter_by_arguments</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="o">**</span><span class="n">filter_args</span><span class="p">)</span><span class="o">.</span><span class="n">one_or_none</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="RSEReadOnlyModel.find_first"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel.find_first">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">find_first</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Find the first item that matches a query</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            *args: List of id(s)</span>
+<span class="sd">            order: Optional order to sort the results. See order_by in SqlAlchemy docs</span>
+<span class="sd">            **kwargs: List of additional items to pass to filter_by</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            - https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.filter_by</span>
+<span class="sd">            - https://docs.sqlalchemy.org/en/latest/orm/query.html#sqlalchemy.orm.query.Query.order_by</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">__mapper__</span><span class="o">.</span><span class="n">primary_key</span><span class="p">)</span>
+        <span class="n">filter_args</span> <span class="o">=</span> <span class="n">get_filter_by_arguments</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="o">**</span><span class="n">filter_args</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">order</span><span class="p">:</span>
-            <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span
-            class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">order</span><span
-            class="p">)</span>
-        <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span
-            class="n">first</span><span class="p">()</span></div>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">query</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="RSEReadOnlyModel.find_all"><a class="viewcode-back"
-                                                              href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel.find_all">[docs]</a>    <span
-        class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">find_all</span><span class="p">(</span><span class="bp">cls</span><span
-            class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span
-            class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span
-            class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span
-            class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span
-            class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span
-            class="p">()</span></div></div>
+<div class="viewcode-block" id="RSEReadOnlyModel.find_all"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.RSEReadOnlyModel.find_all">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">find_all</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span></div></div>
 
 
-<div class="viewcode-block" id="RSEBasicReadWriteModel"><a class="viewcode-back"
-                                                           href="../../rse_db.html#rse_db.data_patterns.RSEBasicReadWriteModel">[docs]</a><span
-        class="k">class</span> <span class="nc">RSEBasicReadWriteModel</span><span class="p">(</span><span class="n">RSEReadOnlyModel</span><span
-        class="p">):</span>
-    <span class="k">def</span> <span class="nf">__setattr__</span><span class="p">(</span><span
-            class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span
-            class="n">value</span><span class="p">):</span>
-        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span
-            class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span
-            class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<div class="viewcode-block" id="RSEBasicReadWriteModel"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.RSEBasicReadWriteModel">[docs]</a><span class="k">class</span> <span class="nc">RSEBasicReadWriteModel</span><span class="p">(</span><span class="n">RSEReadOnlyModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-<div class="viewcode-block" id="RSEBasicReadWriteModel.save"><a class="viewcode-back"
-                                                                href="../../rse_db.html#rse_db.data_patterns.RSEBasicReadWriteModel.save">[docs]</a>    <span
-        class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">cls</span><span
-            class="p">,</span> <span class="n">new_instance</span><span class="p">,</span> <span class="n">commit</span><span
-            class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">session</span><span
-            class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span
-            class="p">:</span>
-            <span class="n">session</span> <span class="o">=</span> <span class="bp">cls</span><span
-            class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">session</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span
-            class="n">new_instance</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must provide an instance of </span><span
-            class="si">{}</span><span class="s2">, not </span><span class="si">{}</span><span
-            class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span
-            class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span
-            class="nb">type</span><span class="p">(</span><span class="n">new_instance</span><span class="p">)))</span>
-        <span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span
-            class="n">new_instance</span><span class="p">)</span>
+<div class="viewcode-block" id="RSEBasicReadWriteModel.commit"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.RSEBasicReadWriteModel.commit">[docs]</a>    <span class="k">def</span> <span class="nf">commit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convenience method to allow saving an object directly</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Self - This is useful in Requests where we want to return model for Serialization after saving</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">session</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="RSEBasicReadWriteModel.save"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.RSEBasicReadWriteModel.save">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">new_instance</span><span class="p">:</span> <span class="s2">&quot;RSEBasicReadWriteModel&quot;</span><span class="p">,</span> <span class="n">commit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save a new copy of an item.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            new_instance: an instance of the item to be saved</span>
+<span class="sd">            commit: Flag to autocommit after saving. The default is true. For large sets of insertions, you will</span>
+<span class="sd">                want to reuse the session and only commit the transaction after all items have been &quot;saved&quot;</span>
+<span class="sd">            session: Optional DB session to use</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Copy of new instance that was Saved</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">session</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">session</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_instance</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must provide an instance of </span><span class="si">{}</span><span class="s2">, not </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">new_instance</span><span class="p">)))</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_instance</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">commit</span><span class="p">:</span>
             <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">new_instance</span></div>
 
-<div class="viewcode-block" id="RSEBasicReadWriteModel.delete_by_pk"><a class="viewcode-back"
-                                                                        href="../../rse_db.html#rse_db.data_patterns.RSEBasicReadWriteModel.delete_by_pk">[docs]</a>    <span
-        class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">delete_by_pk</span><span class="p">(</span><span
-            class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span
-            class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">False</span><span
-            class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span
-            class="p">):</span>
-        <span class="k">if</span> <span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span
-            class="p">:</span>
-            <span class="n">session</span> <span class="o">=</span> <span class="bp">cls</span><span
-            class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">session</span>
-        <span class="n">item</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span
-            class="n">get_by_pk</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span
-            class="p">)</span>
+<div class="viewcode-block" id="RSEBasicReadWriteModel.delete_by_pk"><a class="viewcode-back" href="../../rse_db.html#rse_db.data_patterns.RSEBasicReadWriteModel.delete_by_pk">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">delete_by_pk</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">commit</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete an item by a primary key(s)</span>
+<span class="sd">        Args:</span>
+<span class="sd">            *args: List of id(s) in the definition order of their source model</span>
+<span class="sd">            commit: Flag to autocommit after saving. The default is true. For transactions you can resuse the same</span>
+<span class="sd">                session and set this to False. Then a session commit after all deletions have been executed will</span>
+<span class="sd">                be the most efficient</span>
+<span class="sd">            session: Optional db session object</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">session</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">session</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_by_pk</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">item</span><span class="p">:</span>
-            <span class="n">session</span><span class="o">.</span><span class="n">delete</span><span
-            class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">commit</span><span class="p">:</span>
             <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div></div>
+</pre></div>
 
-</pre>
-                </div>
-
-            </div>
+          </div>
 
         </div>
-    </div>
-    <div aria-label="main navigation" class="sphinxsidebar" role="navigation">
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-            <h1 class="logo"><a href="../../index.html">rse_db</a></h1>
+<h1 class="logo"><a href="../../index.html">rse_db</a></h1>
 
 
-            <h3>Navigation</h3>
-            <p class="caption"><span class="caption-text">Contents:</span></p>
-            <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../readme.html">rse_db</a></li>
-                <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a>
-                </li>
-                <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
-                <li class="toctree-l1"><a class="reference internal" href="../../modules.html">rse_db</a></li>
-                <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a>
-                </li>
-                <li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
-                <li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
-            </ul>
 
-            <div class="relations">
-                <h3>Related Topics</h3>
-                <ul>
-                    <li><a href="../../index.html">Documentation overview</a>
-                        <ul>
-                            <li><a href="../index.html">Module code</a>
-                                <ul>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div id="searchbox" role="search" style="display: none">
-                <h3>Quick search</h3>
-                <div class="searchformwrapper">
-                    <form action="../../search.html" class="search" method="get">
-                        <input name="q" type="text"/>
-                        <input type="submit" value="Go"/>
-                        <input name="check_keywords" type="hidden" value="yes"/>
-                        <input name="area" type="hidden" value="default"/>
-                    </form>
-                </div>
-            </div>
-            <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">rse_db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">rse_db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
 
 
         </div>
+      </div>
+      <div class="clearer"></div>
     </div>
-    <div class="clearer"></div>
-</div>
-<div class="footer">
-    &copy;.
+    <div class="footer">
+      &copy;.
 
-    |
-    Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
-    &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
 
-</div>
+    </div>
 
 
-</body>
+
+
+  </body>
 </html>

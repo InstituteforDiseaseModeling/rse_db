@@ -1,3 +1,4 @@
+bump2version
 coverage~=5.5
 flake8~=3.9.0
 pip>=21.0
@@ -5,8 +6,6 @@ pre-commit
 pytest-runner~=5.3
 pytest~=7.2.0
 tox~=4.2.7
-twine
 twine>=3.4.1
 watchdog~=2.2.1
 wheel~=0.36.2
-bump2version
