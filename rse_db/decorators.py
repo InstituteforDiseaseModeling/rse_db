@@ -14,6 +14,7 @@ def is_json_array(field) -> Callable:
     Returns:
 
     """
+
     @validates(field)
     def check_field(self, key, value):
         # If this fails, it will throw a Marshmallow validation error
@@ -28,10 +29,8 @@ def is_schema_match(cls, schema, field):
 
     def check_field(self, key, value):
         # If this fails, it will throw a Marshmallow validation error
-        p = sh.loads(value)
+        p = sh.loads(value)  # noqa
         return value
 
-    setattr(cls, 'validate_{}'.format(field), validates(check_field))
+    setattr(cls, "validate_{}".format(field), validates(check_field))
     return cls
-
-

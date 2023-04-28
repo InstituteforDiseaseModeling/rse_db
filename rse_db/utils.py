@@ -1,20 +1,17 @@
+import importlib
 import os
-from logging import getLogger
 from typing import Callable
-from flask.cli import AppGroup
-from sqlalchemy.sql import ClauseElement
 
+from flask.cli import AppGroup
 from rse_api.decorators import singleton_function
 from sqlalchemy import create_engine, event
-from sqlalchemy.orm import mapper, sessionmaker
 from sqlalchemy.engine import Engine
 from sqlalchemy.ext.declarative import declarative_base
-import importlib
+from sqlalchemy.orm import mapper
+from sqlalchemy.sql import ClauseElement
 
-
-HAS_FLASK_SQLALCHEMY = importlib.find_loader('flask_sqlalchemy') is not None
-HAS_FLASK_MARSHMALLOW = importlib.find_loader('flask_marshmallow') is not None
-
+HAS_FLASK_SQLALCHEMY = importlib.find_loader("flask_sqlalchemy") is not None
+HAS_FLASK_MARSHMALLOW = importlib.find_loader("flask_marshmallow") is not None
 
 
 def get_or_create(session, model, defaults=None, **kwargs):
@@ -40,7 +37,7 @@ def get_declarative_base(**kwargs):
 
 
 @singleton_function
-def get_flask_marshmallow(app, db, declarative_base_func: Callable=get_declarative_base):
+def get_flask_marshmallow(app, db, declarative_base_func: Callable = get_declarative_base):
     """
     Gets the FlaskMarshmallow object. This is needed with Flask_Sqlalchmey to properly setup bindings
 
@@ -52,13 +49,14 @@ def get_flask_marshmallow(app, db, declarative_base_func: Callable=get_declarati
     :rtype: flask_marshmallow.Marshmallow
     """
     from flask_marshmallow import Marshmallow
+
     MA = Marshmallow(app)
     Base = declarative_base_func()
     Base.query = db.session.query_property()
     return MA, Base
 
 
-def get_cli_commands(app, declarative_base_func: Callable=get_declarative_base):
+def get_cli_commands(app, declarative_base_func: Callable = get_declarative_base):
     """
     Adds CLI commands for creating db, listing tables defined, and dropping tables
 
@@ -67,24 +65,26 @@ def get_cli_commands(app, declarative_base_func: Callable=get_declarative_base):
     :return: None
     """
     # Get flask db should have been called before this with any setup needed
-    db_cli = AppGroup('db', help="Commands related to database")
+    db_cli = AppGroup("db", help="Commands related to database")
     base = declarative_base_func()
 
-    @db_cli.command('init', help="Creates database tables based off of loaded database models. If the table already "
-                                 "exists, it will be skipped")
+    @db_cli.command(
+        "init",
+        help="Creates database tables based off of loaded database models. If the table already " "exists, it will be skipped",
+    )
     def create_db():
         base.metadata.create_all(bind=get_engine(get_db()))
 
-    @db_cli.command('drop_all', help="Drops all known tables in the schema")
+    @db_cli.command("drop_all", help="Drops all known tables in the schema")
     def drop_all():
-        answer = ''
-        while answer.lower() not in ['yes', 'y', 'no', 'n']:
+        answer = ""
+        while answer.lower() not in ["yes", "y", "no", "n"]:
             answer = input("Are you sure you want to delete all tables? [y/n]")
 
-        if answer.lower() in ['yes', 'y']:
+        if answer.lower() in ["yes", "y"]:
             base.metadata.drop_all(bind=get_engine(get_db()))
 
-    @db_cli.command('list_tables', help="List all the tables available")
+    @db_cli.command("list_tables", help="List all the tables available")
     def list_tables():
         for table in base.metadata.sorted_tables:
             print(table.name)
@@ -103,14 +103,20 @@ def get_engine(db) -> Engine:
     engine = db
     if HAS_FLASK_SQLALCHEMY:
         from flask_sqlalchemy import SQLAlchemy
+
         if isinstance(engine, SQLAlchemy):
             engine = db.engine
     return engine
 
 
 @singleton_function
-def get_db(flask_app=None, get_models_func: Callable = None, declarative_base_func: Callable=get_declarative_base,
-           connection_string: str=None, add_cli_commands=True):
+def get_db(
+    flask_app=None,
+    get_models_func: Callable = None,
+    declarative_base_func: Callable = get_declarative_base,
+    connection_string: str = None,
+    add_cli_commands=True,
+):
     """
     Returns a DB object for flask. The function first attempts to load flask_sqlalchemy. If that is present,
     it will
@@ -127,8 +133,9 @@ def get_db(flask_app=None, get_models_func: Callable = None, declarative_base_fu
     # First check to see if we have SQLAlchemy
     if flask_app is not None and HAS_FLASK_SQLALCHEMY:
         from flask_sqlalchemy import SQLAlchemy
+
         db = SQLAlchemy(flask_app)
-    else: # Otherwise fallback to create_engine
+    else:  # Otherwise fallback to create_engine
         if connection_string is None:
             raise ValueError("Connection string must be populated when you are not using flask_sqlalchemy.")
         db = create_engine(connection_string)
@@ -144,11 +151,13 @@ def get_db(flask_app=None, get_models_func: Callable = None, declarative_base_fu
 
     # If a models function was specified, load all the models now
     if get_models_func:
-        models = get_models_func()
+        models = get_models_func()  # noqa
 
-    if callable(declarative_base_func) is not None and \
-            os.environ.get('FLASK_ENV', 'production') in ['development', 'testing'] \
-            and os.environ.get('DEV_DB_CREATE', 'True').lower() in flask_app.config.get('TRUE_OPTIONS', ['true']):
+    if (
+        callable(declarative_base_func) is not None
+        and os.environ.get("FLASK_ENV", "production") in ["development", "testing"]
+        and os.environ.get("DEV_DB_CREATE", "True").lower() in flask_app.config.get("TRUE_OPTIONS", ["true"])
+    ):
         base.metadata.create_all(bind=get_engine(db))
 
     # Add our DB CLI commands
@@ -169,59 +178,46 @@ def setup_schema(Base, session):
     :rtype: Callable
     """
     from marshmallow_sqlalchemy import ModelConversionError, ModelSchema
+
     def setup_schema(Base, session):
         # Create a function which incorporates the Base and session information
         def setup_schema_fn():
             for class_ in Base._decl_class_registry.values():
-                if hasattr(class_, '__tablename__'):
-                    if class_.__name__.endswith('Schema'):
-                        raise ModelConversionError(
-                            "For safety, setup_schema can not be used when a"
-                            "Model class ends with 'Schema'"
-                        )
+                if hasattr(class_, "__tablename__"):
+                    if class_.__name__.endswith("Schema"):
+                        raise ModelConversionError("For safety, setup_schema can not be used when a" "Model class ends with 'Schema'")
 
                     class Meta(object):
                         model = class_
                         sqla_session = session
 
-                    schema_class_name = '%sSchema' % class_.__name__
+                    schema_class_name = "%sSchema" % class_.__name__
 
-                    schema_class = type(
-                        schema_class_name,
-                        (ModelSchema,),
-                        {'Meta': Meta}
-                    )
+                    schema_class = type(schema_class_name, (ModelSchema,), {"Meta": Meta})
 
-                    setattr(class_, '__marshmallow__', schema_class)
+                    setattr(class_, "__marshmallow__", schema_class)
 
         return setup_schema_fn
 
     # Create a function which incorporates the Base and session information
     def setup_schema_fn():
         for class_ in Base._decl_class_registry.values():
-            if hasattr(class_, '__tablename__'):
-                if class_.__name__.endswith('Schema'):
-                    raise ModelConversionError(
-                        "For safety, setup_schema can not be used when a"
-                        "Model class ends with 'Schema'"
-                    )
+            if hasattr(class_, "__tablename__"):
+                if class_.__name__.endswith("Schema"):
+                    raise ModelConversionError("For safety, setup_schema can not be used when a" "Model class ends with 'Schema'")
 
                 class Meta(object):
                     model = class_
                     sqla_session = session
 
-                schema_class_name = '%sSchema' % class_.__name__
+                schema_class_name = "%sSchema" % class_.__name__
 
-                schema_class = type(
-                    schema_class_name,
-                    (ModelSchema,),
-                    {'Meta': Meta}
-                )
+                schema_class = type(schema_class_name, (ModelSchema,), {"Meta": Meta})
 
-                setattr(class_, '__marshmallow__', schema_class)
+                setattr(class_, "__marshmallow__", schema_class)
 
     return setup_schema_fn
 
 
 def auto_generate_schemas(Base, session):
-    event.listen(mapper, 'after_configured', setup_schema(Base, session))
+    event.listen(mapper, "after_configured", setup_schema(Base, session))

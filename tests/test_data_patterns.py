@@ -10,14 +10,14 @@ from rse_db.utils import get_db
 class TestDataPattern(unittest.TestCase):
     def test_read_only_model(self):
         # connect to db
-        db = get_db(connection_string='sqlite:///:memory:')
+        db = get_db(connection_string="sqlite:///:memory:")
         # for cli/non-flask apps, we use the get_query base model. This replicates some of
         # Flask sqlalchemy's behaviour and adds a query property to the add a declarative model to the base
         base = get_query_base_model()
 
         # define our test model
         class User(base, RSEReadOnlyModel):
-            __tablename__ = 'users'
+            __tablename__ = "users"
             id = sa.Column(sa.Integer, primary_key=True)
             name = sa.Column(sa.String)
 

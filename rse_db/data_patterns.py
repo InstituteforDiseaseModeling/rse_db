@@ -1,15 +1,17 @@
 import importlib
 from datetime import datetime
-from sqlalchemy import Column, DateTime, func, Integer, FetchedValue
+
+from sqlalchemy import Column, DateTime, func, Integer
 from sqlalchemy.orm.exc import NoResultFound
 
-HAS_MARSHMALLOW = importlib.find_loader('marshmallow') is not None
+HAS_MARSHMALLOW = importlib.find_loader("marshmallow") is not None
 
 
 class IdMixin(object):
     """
     Simple ID column for SqlAlchemy
     """
+
     id = Column(Integer, autoincrement=True, primary_key=True)
 
 
@@ -17,6 +19,7 @@ class CreatedAtMixin(object):
     """
     DB Model with a created at column by that is populated with the current time by default
     """
+
     created_at = Column(DateTime, server_default=func.now())
 
 
@@ -25,6 +28,7 @@ class CreatedAndUpdatedAtMixin(object):
     DB Model with a created at and updated at columns. Created at is set to the current time when object is inserted
     into db and updated at is set to the current time when an object is saved/inserted
     """
+
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), server_onupdate=func.now())
 
@@ -40,8 +44,8 @@ if HAS_MARSHMALLOW:
         See Also:
             - :meth:`rse_db.data_patterns.IdMixin`
         """
-        id = fields.Integer(required=True, validate=validate.Range(min=0))
 
+        id = fields.Integer(required=True, validate=validate.Range(min=0))
 
     class CreatedAtSchemaMixin(object):
         """
@@ -50,8 +54,8 @@ if HAS_MARSHMALLOW:
         See Also:
             - :meth:`rse_db.data_patterns.CreatedAtMixin`
         """
-        created_at = fields.DateTime(default=datetime.now(), allow_none=False)
 
+        created_at = fields.DateTime(default=datetime.now(), allow_none=False)
 
     class CreatedAndUpdatedAtSchemaMixin(object):
         """
@@ -60,8 +64,9 @@ if HAS_MARSHMALLOW:
         See Also:
             - :meth:`rse_db.data_patterns.CreatedAtMixin`
         """
-        created_at = fields.DateTime(format='iso', missing=datetime.now().isoformat(), allow_none=False)
-        updated_at = fields.DateTime(format='iso', missing=datetime.now().isoformat(), allow_none=False)
+
+        created_at = fields.DateTime(format="iso", missing=datetime.now().isoformat(), allow_none=False)
+        updated_at = fields.DateTime(format="iso", missing=datetime.now().isoformat(), allow_none=False)
 
         @post_load
         def ensure_updated_is_greater_than_created(self, item):
@@ -73,19 +78,15 @@ if HAS_MARSHMALLOW:
             Returns:
 
             """
-            if 'updated_at' in item and 'created_at' in item:
-                updated_at = datetime.fromisoformat(item['updated_at']) if isinstance(item['updated_at'], str) else item['updated_at']
-                created_at = datetime.fromisoformat(item['created_at']) if isinstance(item['updated_at'], str) else item['created_at']
+            if "updated_at" in item and "created_at" in item:
+                updated_at = datetime.fromisoformat(item["updated_at"]) if isinstance(item["updated_at"], str) else item["updated_at"]
+                created_at = datetime.fromisoformat(item["created_at"]) if isinstance(item["updated_at"], str) else item["created_at"]
                 if updated_at < created_at:
                     error_message = "Updated at cannot be greater than created at"
-                    raise ValidationError({
-                        'created_at': error_message,
-                        'updated_at': error_message
-                    })
+                    raise ValidationError({"created_at": error_message, "updated_at": error_message})
             return item
 
-
-    def model_to_str(x, charset='utf8', errors='strict'):
+    def model_to_str(x, charset="utf8", errors="strict"):
         if x is None or isinstance(x, str):
             return x
 
@@ -110,15 +111,13 @@ def get_filter_by_arguments(args, keys, kwargs):
     filter_args = kwargs
     if len(args) > 0:
         if len(keys) != len(args):
-            raise ValueError(
-                "Missing the required arguments. Please provide the following {}".format([k.key for k in keys]))
+            raise ValueError("Missing the required arguments. Please provide the following {}".format([k.key for k in keys]))
         for i in range(len(keys)):
             filter_args[keys[i].key] = args[i]
     return filter_args
 
 
 class RSEReadOnlyModel(object):
-
     def __setattr__(self, name, value):
         """
         Raise an exception if attempting to assign to an atribute of a "read-only" object
@@ -131,8 +130,7 @@ class RSEReadOnlyModel(object):
         Raises:
             ValueError when attemping to set any property since the item is read-only
         """
-        if (name != "_sa_instance_state"
-                and not name.startswith("_t_")):
+        if name != "_sa_instance_state" and not name.startswith("_t_"):
             raise ValueError("Trying to assign to %s of a read-only object %s" % (name, self))
         super().__setattr__(name, value)
 
@@ -154,11 +152,10 @@ class RSEReadOnlyModel(object):
         filter_args = get_filter_by_arguments(args, keys, {})
         try:
             result = cls.query.filter_by(**filter_args).one()
-        except NoResultFound as e:
-            key_str = ', '.join(['{}={}'.format(k,v) for k, v in filter_args.items()])
-            plural_message = '' if len(filter_args.keys()) == 1 else 's'
-            raise NoResultFound("Could not locate {} by"
-                                " primary key{} of {}".format(cls.__name__, plural_message, key_str))
+        except NoResultFound:
+            key_str = ", ".join(["{}={}".format(k, v) for k, v in filter_args.items()])
+            plural_message = "" if len(filter_args.keys()) == 1 else "s"
+            raise NoResultFound("Could not locate {} by" " primary key{} of {}".format(cls.__name__, plural_message, key_str))
         return result
 
     @classmethod
@@ -244,7 +241,7 @@ class RSEBasicReadWriteModel(RSEReadOnlyModel):
         return self
 
     @classmethod
-    def save(cls, new_instance: 'RSEBasicReadWriteModel', commit: bool=True, session=None):
+    def save(cls, new_instance: "RSEBasicReadWriteModel", commit: bool = True, session=None):
         """
         Save a new copy of an item.
 
@@ -267,7 +264,7 @@ class RSEBasicReadWriteModel(RSEReadOnlyModel):
         return new_instance
 
     @classmethod
-    def delete_by_pk(cls, *args, commit: bool=False, session=None):
+    def delete_by_pk(cls, *args, commit: bool = False, session=None):
         """
         Delete an item by a primary key(s)
         Args:
@@ -288,4 +285,3 @@ class RSEBasicReadWriteModel(RSEReadOnlyModel):
 
         if commit:
             session.commit()
-

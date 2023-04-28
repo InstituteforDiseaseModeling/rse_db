@@ -1,12 +1,14 @@
+from rse_api import singleton_function
 from sqlalchemy import orm
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm.exc import UnmappedClassError
-from rse_api import singleton_function
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm.exc import UnmappedClassError
+
 
 @singleton_function
 def get_session_maker():
     from rse_db.utils import get_db
+
     return sessionmaker(bind=get_db())
 
 

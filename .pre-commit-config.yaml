@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v1.4.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-yaml
+        args: [ '--unsafe' ]
+      - id: detect-private-key
+      - id: forbid-new-submodules
+      - id: check-json
+      - id: check-added-large-files
+      - id: flake8
+#  - repo: https://github.com/pycqa/isort
+#    rev: 5.12.0
+#    hooks:
+#      - id: isort
+#        name: isort (python)
+
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+      - id: black
