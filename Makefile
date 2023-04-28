@@ -92,7 +92,8 @@ prepare-version:
 	echo Version: $(VERSION)
 	sed -i -e 's|$(shell git describe --tags --abbrev=0)|$(VERSION)|g' setup.py
 	sed -i -e 's|$(shell git describe --tags --abbrev=0)|$(VERSION)|g' rse_db/__init__.py
-	git add setup.py rse_db/__init__.py
+	pre-commit run --all-files
+	git add setup.py rse_db/__init__.py docs
 	git commit -m "Increment Version from $(shell git describe --tags --abbrev=0) to $(VERSION)"
 
 release-production: docs next-version prepare-version dist do-production-upload tag-next## package and upload a release
