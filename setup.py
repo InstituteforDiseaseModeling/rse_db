@@ -14,12 +14,12 @@ with open("requirements_dev.txt") as dev_requirement_file:
 
 requirements = dict()
 
-for fn in ["", "_dev", "_docs", "_extras"]:
+for fn in ["", "_dev", "_docs"]:
     with open("requirements{}.txt".format(fn)) as dev_requirement_file:
         requirements[fn.replace("_", "") if fn else "default"] = dev_requirement_file.read().split("\n")
 
 extras_require = {
-    "full": requirements["extras"] + requirements["default"],
+    "full": requirements["default"],
     "dev": requirements["dev"] + requirements["default"],
     "doc": requirements["docs"] + requirements["dev"],
 }
