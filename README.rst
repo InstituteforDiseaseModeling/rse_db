@@ -6,12 +6,3 @@ rse_db is a library meant to assist common items associated with database progra
 rse_db
 
 * Documentation: https://institutefordiseasemodeling.github.io/rse_db
-
-
-Features
---------
-
-* TODO
-
-Credits
--------
