@@ -66,7 +66,7 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
         'rse_api>=1.0.2,<1.1',
-        'sqlalchemy>=1.2.12,<1.13'
+        'sqlalchemy>=1.2.12,<2.1'
     ],
     setup_requires=setup_requirements,
     extras_requires=extras_require,
